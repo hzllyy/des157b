@@ -1,0 +1,131 @@
+.amatic-sc-regular {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+  .amatic-sc-bold {
+    font-family: "Amatic SC", sans-serif;
+    font-weight: 700;
+    font-style: normal;
+  }  
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    position: relative;
+    height: 100%;
+    max-width: 100vw;
+    aspect-ratio: 16/10;
+    overflow: hidden;
+}
+
+.scalable {
+    position: absolute;
+
+    width: 100%;
+    height: auto;
+}
+
+#lamplight {
+    position: absolute;
+    width: 9%;
+    left: 50%;
+    bottom: 42.5%;
+
+    cursor: pointer;
+}
+
+#musiclight {
+    position: absolute;
+    width: 8%;
+    left: 29%;
+    top: 13.5%;
+
+    cursor: pointer;
+}
+
+#drawerlight1 {
+    position: absolute;
+    width: 22%;
+    left: 13.8%;
+    top: 34.5%;
+
+    cursor: pointer;
+}
+
+#drawerlight2 {
+    position: absolute;
+    width: 22%;
+    left: 13.8%;
+    top: 45.5%;
+
+    cursor: pointer;
+}
+
+#drawerlight3 {
+    position: absolute;
+    width: 22%;
+    left: 13.8%;
+    top: 56.5%;
+
+    cursor: pointer;
+}
+
+#drawerlight4 {
+    position: absolute;
+    width: 22%;
+    left: 13.8%;
+    top: 67.5%;
+
+    cursor: pointer;
+}
+
+.drawer-img1.open {
+    width: 23.5% !important;
+    transform: translate(-2.8%, -50%) !important;
+    z-index: 10;
+}
+
+.drawer-img.open {
+    width: 23.5% !important;
+    transform: translate(-2.8%, -53%) !important;
+    z-index: 10;
+}
+
+.text {
+    font-family: "Amatic SC";
+    position: absolute;
+    font-size: 2.5vw;
+    font-weight: 1000;
+
+    cursor: pointer;
+}
+
+#text1 {
+    left: 17%;
+    top: 33.4%;
+}
+
+#text2 {
+    left: 21.75%;
+    top: 44.4%;
+}
+
+#text3 {
+    left: 20.5%;
+    top: 55.4%;
+}
+
+
+#text4 {
+    left: 21.5%;
+    top: 66.4%;
+}
+
+.text.enlarge {
+    transform: scale(1.2);
+}
