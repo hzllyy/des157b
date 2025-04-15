@@ -130,3 +130,25 @@ body {
 .text.enlarge {
     transform: scale(1.2);
 }
+
+#cattv {
+    position: absolute;
+    z-index: 1000;
+
+    font-family: "Amatic SC";
+    text-decoration: none;
+    color: black;
+
+    font-size: 1.5em;
+    font-weight: 1000 !important;
+
+    cursor: pointer;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.showing {
+    opacity: 1;
+}

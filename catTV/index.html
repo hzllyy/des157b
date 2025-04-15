@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cat TV</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="container">
+        <div id="screen">
+            <div id="screenchild">
+                <video id="nhi" controls muted loop autoplay playsinline>
+                    <source src="media/nhi.webm" type="video/webm">
+                    <source src="media/nhi.mp4" type="video/mp4">
+    
+                    <p>Your browser doesn't support HTML5 video.</p>
+                </video>
+
+                <img src="images/tv.PNG" alt="tv" id="tv">
+
+                <!-- baker nhi -->
+                <img src="images/chef.PNG" alt="chef" id="chefhat" class="hidden">
+                <img src="images/dough1.PNG" alt="dough1" id="dough1" class="hidden">
+                <img src="images/dough2.PNG" alt="dough2" id="dough2" class="hidden">
+                <img src="images/rollingpin.PNG" alt="rollingpin" id="rollingpin" class="hidden">
+
+                <!-- boxer nhi -->
+                 <img src="images/glove-right.PNG" alt="rightglove" id="rightglove" class="hidden">
+                 <img src="images/glove-left.PNG" alt="leftglove" id="leftglove" class="hidden">
+
+                 <img src="images/glove-right.PNG" alt="rightglove2" id="rightglove2" class="hidden">
+                 <img src="images/glove-left.PNG" alt="leftglove2" id="leftglove2"
+                 class="hidden">
+
+                 <!-- swe nhi -->
+                <img src="images/laptop1.PNG" alt="laptop1" id="laptop1" class="hidden">
+                <img src="images/laptop2.PNG" alt="laptop2" id="laptop2" class="hidden">
+
+                <!-- off screen -->
+                 <img src="images/off.png" alt="off" id="off" class="showing">
+
+                <!-- loading screen -->
+                <img src="images/catload.PNG" alt="loading" id="catload" class="hidden">
+
+            </div> 
+
+        </div>
+       
+        <div id="remotecontrol">
+            <img src="images/remote.PNG" alt="remote" id="remote">
+
+            <img src="images/on.PNG" alt="on-btn" id="on-btn" class="icon">
+            <img src="images/raise.PNG" alt="vol-up" id="up" class="icon">
+            <img src="images/vol.PNG" alt="volume" id="volume" class="icon">
+            <img src="images/lower.PNG" alt="vol-down" id="down" class="icon">
+
+            <div id="filters">
+                <img src="images/none.PNG" alt="no-filter" id="no-filter">
+                <img src="images/hat.PNG" alt="baker" id="baker">
+                <img src="images/boxing.PNG" alt="boxer" id="boxer">
+                <img src="images/computer.PNG" alt="swe" id="swe">
+            </div>
+        </div>
+
+        <audio id="audio-player" src="audios/meowmeow.mp3" loop></audio>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

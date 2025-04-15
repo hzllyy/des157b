@@ -1,0 +1,255 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html {
+    background-image: url("images/background.jpg");
+    background-repeat: no-repeat;
+    z-index: -15;
+
+    background-size: cover;
+}
+
+#container {
+    position: relative;
+    width: 100%;
+    max-width: 2000px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+
+    gap: 5%;
+    padding: 10%;
+}
+
+#screen img,
+#remotecontrol img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+#screen,
+#remotecontrol {
+    position: relative;
+}
+
+#nhi {
+    position: absolute;
+    z-index: -10;
+
+    width: 75%;
+    bottom: 2%;
+    left: 12%;
+}
+
+.icon {
+    position: absolute;
+}
+
+#on-btn {
+    width: 25% !important;
+    height: auto;
+
+    top: 3%;
+    right: 7%;
+
+    cursor: pointer;
+}
+
+#up {
+    width: 50% !important;
+    height: auto;
+
+    top: 15%;
+    left: 25%;
+
+
+    cursor: pointer;
+}
+
+#volume {
+    width: 50% !important; 
+    height: auto;
+
+    top: 25%;
+    left: 26%;
+
+    cursor: pointer;
+}
+
+#down {
+    width: 50% !important;
+    height: auto;
+
+    top: 45%;
+    left: 26%;
+
+    cursor: pointer;
+}
+
+#filters {
+    position: absolute;
+    display: grid;
+
+    width: 80%;
+
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3%;
+
+    top: 60%;
+    left: 11%;
+}
+
+#filters img {
+    cursor: pointer;
+}
+
+.hidden {
+    opacity: 0 !important;
+}
+
+.showing {
+    opacity: 1;
+}
+
+#chefhat {
+    position: absolute;
+    z-index: -5;
+
+    width: 15% !important;
+    top: 49%;
+    right: 39%;
+}
+
+#dough1 {
+    position: absolute;
+    z-index: -6;
+    
+    width: 20% !important;
+    top: 49%;
+    right: 48%;
+}
+
+#dough2 {
+    position: absolute;
+    z-index: -6;
+    
+    width: 20% !important;
+    top: 51%;
+    right: 48%;
+}
+
+#rollingpin {
+    position: absolute;
+    z-index: -5;
+
+    width: 10% !important;
+    top: 50%;
+    left: 20%;
+}
+
+#rightglove {
+    position: absolute;
+    z-index: -6;
+
+    width: 11% !important;
+    top: 50%;
+    right: 48%;
+}
+
+#leftglove {
+    position: absolute;
+    z-index: -6;
+
+    width: 12% !important;
+    top: 60%;
+    right: 52%;
+}
+
+#rightglove2 {
+    position: absolute;
+    z-index: -6;
+
+    width: 11% !important;
+    top: 52%;
+    right: 47%;
+}
+
+#leftglove2 {
+    position: absolute;
+    z-index: -6;
+
+    width: 12% !important;
+    top: 57%;
+    right: 54%;
+}
+
+#laptop1 {
+    position: absolute;
+    z-index: -5;
+
+    width: 25% !important;
+    top: 38%;
+    left: 30%;
+}
+
+#laptop2 {
+    position: absolute;
+    z-index: -5;
+
+    width: 31% !important;
+    top: 38%;
+    left: 30%;
+}
+
+#off {
+    position: absolute;
+    z-index: -5;
+
+    width: 90% !important;
+    top: 35%;
+    left: 5%;
+}
+
+#loading {
+    position: absolute;
+    z-index: -5;
+
+    width: 90% !important;
+    top: 35%;
+    left: 5%;
+}
+
+#catload {
+    position: absolute;
+    z-index: -4;
+
+    width: 10% !important;
+    top: 60%;
+    left: 45%;
+
+    transform: translate(-50%, -50%);
+    animation: bird 2s infinite alternate ease-in-out;
+}
+
+@keyframes bird {
+    0% {
+      opacity: .5;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: .5;
+      transform: scale(1.5);
+    }
+  }
+
