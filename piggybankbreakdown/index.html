@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Piggybank Breakdown</title>
+</head>
+<body>
+    <h1>PIGGYBANK BREAKDOWN</h1>
+
+    <p>please select a month:</p>
+    <select id="dropdown" name="dropdown">
+        <option value="" disabled selected>---</option>
+        <option value="jan">January</option>
+        <option value="feb">February</option>
+        <option value="mar">March</option>
+    </select>
+
+    <p>or upload your own bank statement for analysis:</p>
+    <p>(this feature does NOT work rn, pls don't attempt it xx)</p>
+    <input type="file" id="pdfUpload" accept=".pdf"/>
+
+    <button id="submit">analyze me!</button>
+
+    <div id="result"></div>
+
+    <script src="script.js"></script>
+    
+</body>
+</html>
