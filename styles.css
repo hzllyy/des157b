@@ -260,6 +260,11 @@ body {
     top: 28.75%;
 }
 
+#brainstorm {
+    top: 34.5%;
+    letter-spacing: 0.04rem;
+}
+
 .hidden {
     opacity: 0;
 }
