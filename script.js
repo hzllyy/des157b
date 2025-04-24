@@ -8,7 +8,7 @@
     var lamp = document.getElementById("lamplight");
 
     // store image IDs and their current modes
-    const imageIDs = ["bglight", "bedlight", "closetlight", "miffylight", "clotheslight", "musiclight", "lamplight", "drawerlight1", "drawerlight2", "drawerlight3", "drawerlight4",];
+    const imageIDs = ["bg", "paper", "shelf", "des", "cal", "poster", "nightstand", "bedlight", "laptop", "closetlight", "miffylight", "clotheslight", "musiclight", "lamplight", "drawerlight1", "drawerlight2", "drawerlight3", "drawerlight4"];
 
     // set initial state
     let isLightOn = true;
@@ -43,42 +43,47 @@
         drawerlight3: document.getElementById('text3'),
         drawerlight4: document.getElementById('text4'),
     };
+    
+    const linksGroups = {
+        drawerlight1: Array.from(document.querySelectorAll('#group1 .link')),
+        drawerlight2: Array.from(document.querySelectorAll('#group2 .link')),
+        drawerlight3: Array.from(document.querySelectorAll('#group3 .link')),
+        drawerlight4: Array.from(document.querySelectorAll('#group4 .link'))
+    }
 
-    // handle special case
-    drawerLight1.classList.add('drawer-img1');
+    function addHoverBehavior(imgEl, textEl, linkArray) {
+        function handleMouseOver() {
+            imgEl.classList.add('open');
+            const src = imgEl.getAttribute('src');
+            imgEl.setAttribute('src', src.replace('drawer', 'open'));
+            textEl.classList.add('enlarge');
+            linkArray.forEach(link => link.classList.remove('hidden'));
+        }
+    
+        function handleMouseOut() {
+            imgEl.classList.remove('open');
+            const src = imgEl.getAttribute('src');
+            imgEl.setAttribute('src', src.replace('open', 'drawer'));
+            textEl.classList.remove('enlarge');
+            linkArray.forEach(link => link.classList.add('hidden'));
+        }
+    
+        [imgEl, textEl, ...linkArray].forEach(el => {
+            el.addEventListener('mouseover', handleMouseOver);
+            el.addEventListener('mouseout', handleMouseOut);
+        })
+    }
 
-    drawerLight1.addEventListener('mouseover', function() {
-        drawerLight1.classList.add('open');
-        const src = drawerLight1.getAttribute('src');
-        drawerLight1.setAttribute('src', src.replace('drawer', 'open1'));
-        drawerTextMap.drawerlight1.classList.add('enlarge');
-    });
+    addHoverBehavior(drawerLight1, drawerTextMap.drawerlight1, linksGroups.drawerlight1);
+    drawerLight1.classList.add('drawer-img');
 
-    drawerLight1.addEventListener('mouseout', function() {
-        drawerLight1.classList.remove('open');
-        const src = drawerLight1.getAttribute('src');
-        drawerLight1.setAttribute('src', src.replace('open1', 'drawer'));
-        drawerTextMap.drawerlight1.classList.remove('enlarge');
-    });
-
-    // opening and closing drawers for the rest
     drawerIDs.forEach(id => {
         const img = document.getElementById(id);
+        const text = drawerTextMap[id];
+        const link = linksGroups[id];
+    
         img.classList.add('drawer-img');
-
-        img.addEventListener('mouseover', function() {
-            img.classList.add('open');
-            const src= img.getAttribute('src');
-            img.setAttribute('src', src.replace('drawer', 'open2'));
-            drawerTextMap[id].classList.add('enlarge');
-        });
-
-        img.addEventListener('mouseout', function() {
-            img.classList.remove('open');
-            const src = img.getAttribute('src');
-            img.setAttribute('src', src.replace('open2', 'drawer'))
-            drawerTextMap[id].classList.remove('enlarge');
-        });
+        addHoverBehavior(img, text, link);
     });
 
     // HANDLE RECORD PLAYER
