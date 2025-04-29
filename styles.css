@@ -265,6 +265,10 @@ body {
     letter-spacing: 0.04rem;
 }
 
+#friendslist {
+    left: 33%;
+}
+
 .hidden {
     opacity: 0;
 }
