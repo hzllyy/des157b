@@ -4,27 +4,92 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Piggybank Breakdown</title>
+
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Nerko+One&family=Patrick+Hand+SC&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body>
-    <h1>PIGGYBANK BREAKDOWN</h1>
+    <h1>PIGGY<span id="bank">BANK</span> BREAKDOWN!</h1>
 
-    <img src="images/pig-sleep.PNG" alt="pig-sleep" id="pigsleep">
+    <div id="first-page">
+        <div id="pig">
+            <img src="images/pig-sleep.PNG" alt="pig-sleep" id="pig-sleep">
+            <img src="images/hammer.PNG" alt="hammer" id="hammer" class="hidden">
+        </div>
+    
+        <div id="month-select">
+            <p id="select">select a month:</p>
+            <select id="dropdown" name="dropdown">
+                <option value=""disabled selected>---</option>
+                <option value="jan">JAN</option>
+                <option value="feb">FEB</option>
+                <option value="mar">MARCH</option>
+            </select>
+        </div>
+    
+        <div id="pdf-upload">
+            <p>or upload your own bank statement:</p>
+            <div id="upload">
+    
+                <label for="pdf" class="upload-btn" id="pdf-btn">CHOOSE FILE</label>
+                <input type="file" name="upload file" id="pdf" hidden>
+                <p>no file chosen</p>
+    
+            </div>
+        </div>
+    
+        <button id="submit">BREAK THE PIG!</button>
+    </div>
 
-    <p>please select a month:</p>
-    <select id="dropdown" name="dropdown">
-        <option value="" disabled selected>---</option>
-        <option value="jan">January</option>
-        <option value="feb">February</option>
-        <option value="mar">March</option>
-    </select>
+    <div id="results" class="disappear">
+        <div id="result"></div>
+        <div id="chart-wrapper">
+            <canvas id="pieChart"></canvas>
+        </div>
+        <div id="legend" class="disappear hidden">
+            <img src="images/legend.png" alt="legend" id="legend-img">
+            <div id="categories">
+                <ul>
+                    <li>transportation</li>
+                    <li>food</li>
+                    <li>miscellaneous</li>
+                    <li>investments</li>
+                    <li>rent and utilities</li>
+                    <li>credit card</li>
+                    <li>subscriptions</li>
+                </ul>
+            </div>
+        </div>
+    </div>
 
-    <p>or upload your own bank statement for analysis:</p>
-    <p>(this feature does NOT work rn, pls don't attempt it xx)</p>
-    <input type="file" id="pdfUpload" accept=".pdf"/>
-
-    <button id="submit">analyze me!</button>
-
-    <div id="result"></div>
+    <div id="cards" class="hidden disappear">
+        <div id="bacon" class="card">
+            <img src="images/pig-hover.PNG" class="hover hidden" id="pig1">
+            <p id="bacon-text"># SLICES OF BACON</p>
+            <img src="images/bacon.PNG" alt="bacon">
+        </div>
+        <div id="paintbrush" class="card">
+            <img src="images/pig-hover.PNG" class="hover hidden" id="pig2">
+            <p id="paintbrush-text"># PAINTBRUSHES</p>
+            <img src="images/paintbrushes.PNG" alt="paintbrushes"  id="paintbrush-img">
+        </div>
+        <div id="insulin" class="card">
+            <img src="images/pig-hover.PNG" class="hover hidden" id="pig3">
+            <p id="insulin-text"># INSULIN VIALS</p>
+            <img src="images/insulin.PNG" alt="insulin" id="insulin-img">
+        </div>
+        <div id="football" class="card">
+            <img src="images/pig-hover.PNG" class="hover hidden" id="pig4">
+            <p id="football-text"># FOOTBALLS</p>
+            <img src="images/football.PNG" alt="football" id="football-img">
+        </div>
+    </div>
 
     <script src="script.js"></script>
     

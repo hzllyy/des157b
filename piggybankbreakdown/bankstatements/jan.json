@@ -37,12 +37,12 @@
     {
         "description": "PURCHASE 0128 Amazon Prime*Z75PC01Q2 Amzn.com/billWA",
         "amount": "-16.23",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "Zelle payment to Nae Conf# l2usthfh1",
         "amount": "-26.00",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "KIM`S MART 01/29 #000001656 PURCHASE 628 4TH ST DAVIS CA",
@@ -57,27 +57,27 @@
     {
         "description": "CHECKCARD 0129 TM *GALANTIS 800-653-8000 CA 24692165029103908038063",
         "amount": "-145.50",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "CHECKCARD 0129 UCD ICA -TICKETSWEST 530-752-1111",
         "amount": "-30.00",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "PURCHASE 0130 DEPOP WWW.DEPOP.COMNY ",
         "amount": "-51.20",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "PURCHASE 0130 SP FOR LOVE AND LEMONS CHECKOUT.FORLCA",
         "amount": "-111.35",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "PURCHASE 0130 AMAZON MKTPL*Z72PS2Q22 Amzn.com/billWA",
         "amount": "-19.69",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "APPLE STORE # 02/01 #000999558 MOBILE PURCHASE APPLE STORE #R07 SACRAMENTO CA",
@@ -92,7 +92,7 @@
     {
         "description": "Zelle payment to ALEXANDER GEE Conf# n8cxs0yxc",
         "amount": "-860.00",
-        "category": "rent"
+        "category": "rent and utilities"
     },
     {
         "description": "PURCHASE 0202 DD *DOORDASH PANDAEXPR DOORDASH.COM CA",
@@ -112,22 +112,22 @@
     {
         "description": "PURCHASE 0203 SP VITALY DESIGN LTD TORONTO ON",
         "amount": "-138.55",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "DISCOVER DES:E-PAYMENT ID:7397 INDN:ZHENG HOLLY ",
         "amount": "-164.82",
-        "category": "cc"
+        "category": "credit card"
     },
     {
         "description": "CHECKCARD 0203 LP*eyecandys.com HK",
         "amount": "-34.96",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "NNT ARDEN FAIR 02/05 #000633779 PURCHASE 1689 ARDEN WAY #1",
         "amount": "-23.25",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "TRADER JOE S # 02/05 #000146045 PURCHASE TRADER JOE S #18 DAVIS",
@@ -147,12 +147,12 @@
     {
         "description": "CHECKCARD 0208 FGT*BEYONDSOCAL 512-389-0315 TX 24036295039714991300265",
         "amount": "-207.08",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "CHECKCARD 0208 ALLIANZ EVENT INS ALLIANZINS.USVA 24036295039718991315371",
         "amount": "-11.39",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "MOBILE PURCHASE 0208 NNT HONEYS DS DAVIS CA",
@@ -177,7 +177,7 @@
     {
         "description": "Zelle payment to TAM HO for airbnb; Conf# oedzgas3c",
         "amount": "-140.00",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "SAVE MART#617R 02/14 #000079829 MOBILE PURCHASE SAVE MART#617RO",
@@ -197,7 +197,7 @@
     {
         "description": "MOBILE PURCHASE 0214 ROUND1 AM - ROSEVILLE M ROSEVILLE CA",
         "amount": "-100.00",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "MOBILE PURCHASE 0215 SAFEWAY #1561 DAVIS CA",
@@ -242,6 +242,6 @@
     {
         "description": "VENMO DES:PAYMENT ID:1040393781580 INDN:HOLLY ZHENG ",
         "amount": "-48.40",
-        "category": "misc"
+        "category": "miscellaneous"
     }
 ]

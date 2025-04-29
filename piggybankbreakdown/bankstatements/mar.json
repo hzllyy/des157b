@@ -17,7 +17,7 @@
     {
         "description": "PURCHASE 0221 AMAZON MKTPL*0A0KU3YA3 Amzn.com/billWA",
         "amount": "-47.64",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "PURCHASE 0221 ADOBE *ADOBE 408-536-6000 CA",
@@ -32,7 +32,7 @@
     {
         "description": "PURCHASE 0221 DEPOP WWW.DEPOP.COMNY",
         "amount": "-177.64",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "MOBILE PURCHASE 0222 SQ *TONY VILLANUEVA Sacramento CA",
@@ -42,7 +42,7 @@
     {
         "description": "Zelle payment to 5307618519 Conf# n3zyqxknx ",
         "amount": "-43.00",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "PURCHASE 0223 DD *DOORDASH UMETEA WWW.DOORDASH.CA",
@@ -62,7 +62,7 @@
     {
         "description": "CHECKCARD 0223 BROADWAY SAN FRANCISCO",
         "amount": "-224.90",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "MOBILE PURCHASE 0223 BON MUA RESTAURANT SACRAMENTO CA",
@@ -77,12 +77,12 @@
     {
         "description": "CHECKCARD 0225 STEAMGAMES.COM",
         "amount": "-8.99",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "CHECKCARD 0225 STEAMGAMES.COM",
         "amount": "-8.99",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "CHECKCARD 0225 UCD TS AIMS ucdav ",
@@ -102,12 +102,12 @@
     {
         "description": "CHECKCARD 0301 WL *STEAM PURCHASE",
         "amount": "-15.99",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "PURCHASE 0301 AMAZON PRIME*510M74CI3 Amzn.com/billWA ",
         "amount": "-16.23",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "MOBILE PURCHASE 0301 SQ *FLATBREAD QUEEN, IN Davis CA",
@@ -127,37 +127,37 @@
     {
         "description": "MOBILE PURCHASE 0301 XI SQUARE DAVIS CA",
         "amount": "-23.82",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "Zelle payment to 5307618519 Conf# pb9r4swfa",
         "amount": "-45.00",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "Zelle payment to ALEXANDER GEE Conf# o6hx5c8zu",
         "amount": "-860.00",
-        "category": "rent"
+        "category": "rent and utilities"
     },
     {
         "description": "CHECKCARD 0302 PG E EZ PAY SAN FRANCISCOCA",
         "amount": "-341.63",
-        "category": "rent"
+        "category": "rent and utilities"
     },
     {
         "description": "CVS/PHARMACY # 03/02 #000536478 MOBILE PURCHASE CVS/PHARMACY",
         "amount": "-18.18",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "DISCOVER DES:E-PAYMENT ID:7397 INDN:ZHENG HOLLY",
         "amount": "-199.65",
-        "category": "cc"
+        "category": "credit card"
     },
     {
         "description": "PURCHASE 0303 AMAZON MKTPL*KP9XS1TY3 Amzn.com/billWA",
         "amount": "-39.91",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "CHECKCARD 0304 UCD TS AIMS ucdav",
@@ -177,7 +177,7 @@
     {
         "description": "PURCHASE 0307 SP PEPPERMAYO US WATERLOO",
         "amount": "-64.25",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "CHECKCARD 0308 SQ *FLATBREAD QUEEN, IN Davis",
@@ -192,7 +192,7 @@
     {
         "description": "MOBILE PURCHASE 0308 SQ *YESTERDAY DAVIS, LL Davis",
         "amount": "-32.83",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "COSTCO WHSE #1 03/09 #000700472 PURCHASE COSTCO WHSE #1003 WOODLAND",
@@ -202,17 +202,17 @@
     {
         "description": "VENMO DES:PAYMENT ID:1040763027738 INDN:HOLLY ZHENG",
         "amount": "-1.50",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "MOBILE PURCHASE 0309 ULTA #1397 WOODLAND CA",
         "amount": "-34.46",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "PURCHASE 0311 DEPOP WWW.DEPOP.COMNY",
         "amount": "-26.91",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "KIM`S MART 03/13 #000002118 PURCHASE 628 4TH ST DAVIS CA",
@@ -227,12 +227,12 @@
     {
         "description": "PURCHASE 0315 Audible*RZ9395IZ3 Amzn.com/billNJ",
         "amount": "-0.99",
-        "category": "subscription"
+        "category": "subscriptions"
     },
     {
         "description": "PURCHASE 0315 SP EDIKTED EDIKTED.COM DE",
         "amount": "-50.49",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "MOBILE PURCHASE 0316 SQ *ALI BABA RESTAURANT Davis CA",
@@ -247,7 +247,7 @@
     {
         "description": "CHECKCARD 0318 WL *Steam Purchase 425-9522985",
         "amount": "-12.49",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "CHECKCARD 0318 THREE LADIES CAFE DAVIS ",
@@ -262,17 +262,17 @@
     {
         "description": "BKOFAMERICA ATM 03/21 #000001747 WITHDRWL DAVIS DAVIS CA",
         "amount": "-20.00",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "Zelle payment to 5307618519 Conf# on7l92ypf",
         "amount": "-16.00",
-        "category": "misc"
+        "category": "miscellaneous"
     },
     {
         "description": "Zelle payment to 5307618519 Conf# rp7i0emyt ",
         "amount": "-15.00",
-        "category": "misc"
+        "category": "miscellaneous"
     }
 ]
     
