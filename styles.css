@@ -269,6 +269,12 @@ body {
     left: 33%;
 }
 
+#library {
+    left: 33%;
+    top: 26%;
+    letter-spacing: 0.08rem;
+}
+
 .hidden {
     opacity: 0;
 }
