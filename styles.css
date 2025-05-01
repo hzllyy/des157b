@@ -275,6 +275,11 @@ body {
     letter-spacing: 0.08rem;
 }
 
+#proposal {
+    left: 25%;
+    top: 56.5%;
+}
+
 .hidden {
     opacity: 0;
 }
