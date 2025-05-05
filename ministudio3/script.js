@@ -1,15 +1,17 @@
 const config = {
     type: Phaser.AUTO,
-    width: 440,
-    height: 224,
+    scale: {
+        mode: Phaser.Scale.FIT,
+        width: 440,
+        height: 224,
+        autoCenter: Phaser.Scale.CENTER_BOTH
+    },
     pixelArt: true,
     physics: {
         default: 'matter',
         matter: {
-            gravity: {y: 0.7},
-            debug: false,
-            showStaticBody: true,
-            showCollisions: true
+            gravity: { y: 0.7 },
+            debug: false
         }
     },
     scene: {
@@ -18,8 +20,8 @@ const config = {
         update
     },
     parent: 'phaser-game'
-    
 };
+
 
 // start game
 const  game = new Phaser.Game(config);

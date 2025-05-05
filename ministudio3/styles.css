@@ -6,9 +6,6 @@ html, body {
     height: 100%;
     margin: 0;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     background-color: #723c3c;
 }
