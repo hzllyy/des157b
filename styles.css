@@ -280,6 +280,18 @@ body {
     top: 56.5%;
 }
 
+#comparison {
+    top: 37.25%;
+    letter-spacing: 0.001rem;
+    left: 23.4%;
+}
+
+#bibliography {
+    top: 40%;
+    letter-spacing: 0.0001rem;
+    left: 23.37%;
+}
+
 .hidden {
     opacity: 0;
 }

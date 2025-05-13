@@ -1,0 +1,29 @@
+body {
+    width: 65%;
+    display: block;
+    margin: auto;
+
+    font-family: "Coral Pixels";
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+img {
+    width: 50%;
+    display: block;
+    margin: auto;
+    padding: 10px;
+}
+
+.citation {
+    /* hanging indent */
+    padding-left: 2rem;
+    text-indent: -2rem;
+}
+
+.annotation {
+    padding-left: 2rem;
+}
