@@ -57,6 +57,65 @@ p {
     height: 2.6vw;
     width: 8vw;
     padding: 0.1rem 0.5rem;
+.nerko-one-regular {
+    font-family: "Nerko One", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
+body {
+    background-color: #fff2c7;
+    font-family: "Nerko One";
+
+    text-align: center;
+    height: 86vh;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-weight: 400;
+    font-size: 5.5vw; 
+
+    margin-bottom: 2%;
+}
+
+#bank {
+    color: #FF9F92;
+}
+
+#pig-sleep {
+    width: 25vw;
+    margin-top: 0;
+}
+
+p {
+    font-size: 1.9vw;
+    line-height: 0.6rem;
+    font-weight: 500;
+}
+
+#month-select {
+    display: flex;
+    gap: 3%;
+    width: 21vw;
+
+    align-items: center;
+    justify-content: center; 
+}
+
+#dropdown {
+    background-color: white;
+    border: 3px solid black;
+    border-radius: 25px;
+
+    height: 2.6vw;
+    width: 8vw;
+    padding: 0.1rem 0.5rem;
 
     font-family: "Nerko One";
     font-size: 1.8vw;
@@ -290,5 +349,278 @@ p {
 
 .scale {
     transform: scale(1.05);
+}
+
+#back-btn {
+    position: absolute;
+    top: 2vw;
+    left: 2vw;
+    padding: 0.5vw 1vw;
+    cursor: pointer;
+    border: 3px solid black;
+    border-radius: 25px;
+    background-color: #FFD0CB;
+    font-family: "Nerko One";
+    font-size: 1.5vw;
+    font-weight: 100;
+    transition: transform 0.2s ease;
+}
+
+#back-btn:hover {
+    transform: scale(1.1);
+}
+
+
+    font-family: "Nerko One";
+    font-size: 1.8vw;
+    font-weight: 100;
+    cursor: pointer;
+}
+
+#pdf-upload {
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+#pdf-upload p {
+    margin-bottom: 1.2vw;
+}
+
+#upload {
+    display: flex;
+    flex-direction: row;
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 0.5vw;
+    margin-bottom: 1.8vw;
+}
+
+#upload p{
+    margin: 0;
+    font-size: 1.5vw;
+    font-weight: 100;
+}
+
+#pdf-btn {
+    font-size: 1.5vw;
+    font-weight: 100;
+    cursor: pointer;
+    background-color: white;
+
+    padding: 0.1vw 1vw;
+    border: 3px solid black;
+    border-radius: 25px;
+}
+
+#submit:hover {
+    transform: scale(1.2);
+}
+
+#submit {
+    width: 15vw;
+    padding: 0.75vw;
+
+    cursor: pointer;
+
+    border: 3.5px solid black;
+    border-radius: 50px;
+    background-color: #FFD0CB;
+
+    font-family: "Nerko One";
+    font-size: 2.1vw;
+    line-height: 1.8vw;
+    font-weight: 100;
+}
+
+#pig {
+    position: relative;
+}
+
+#hammer {
+    position: absolute;
+    transform-origin: center right;
+    transform: rotate(90deg);
+    top: 2vw;
+    right: -3vw;
+
+    width: 13vw;
+    opacity: 0;
+}
+
+#hammer.showing {
+    animation: swingHammer 0.8s ease-in forwards;
+}
+
+@keyframes swingHammer {
+    0% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(90deg);
+    }
+    100% {
+        transform: rotate(28deg);
+    }
+}
+
+#results {
+    display: flex;
+    text-align: left;
+    flex-direction: row;
+
+    gap: 2.5vw;
+}
+
+#result h2 {
+    font-size: 2vw;
+    font-weight: 100;
+}
+
+#result h1 {
+    line-height: 0.5vw;
+    margin-top: 2.5vw !important;
+
+    font-size: 6.5vw;
+}
+
+#result p {
+    margin-top: 4vw;
+    width: 22vw;
+
+    line-height: 2vw;
+    font-size: 1.6vw;
+}
+
+#chart-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 16.75vw;
+    height: 16.75vw;
+    padding:  1vw 2vw;
+}
+
+#pieChart {
+    width: 100%;
+    height: 100%;
+}
+
+#legend {
+    position: relative;
+}
+
+#legend-img {
+    width: 12vw;
+}
+
+#categories {
+    position: absolute;
+    top: 0;
+    right: 1vw;
+    line-height: 2.2vw;
+    padding-top: 0.5vw;
+}
+
+#categories ul {
+    list-style-type: none;
+    font-size: 1vw;
+}
+
+#categories li {
+    cursor: pointer;
+}
+
+#cards {
+    margin-top: 3.6vw;
+    display: flex;
+    gap: 1.2vw;
+
+    cursor: pointer;
+}
+
+#cards div {
+    width: 14.5vw;
+    height: 14vw;
+    background-color: white;
+    border: 3.5px solid black;
+    border-radius: 15px;
+}
+
+#cards img {
+    width: 10vw;
+    height: auto;
+
+    margin-top: -0.5vw;
+}
+
+.card {
+    position: relative;
+}
+
+#paintbrush-img {
+    width: 14vw !important;
+    padding-top: 1.7vw !important;
+}
+
+#insulin-img {
+    width: 7vw !important;
+    padding-top: 0.5vw;
+}
+
+#football-img {
+    padding-top: 1.7vw !important;
+}
+
+.hover {
+    position: absolute;
+    top: -5.1vw;
+    left: 2.7vw;
+    
+}
+
+#cards p {
+    font-size: 1.5vw;
+}
+
+.hidden {
+    opacity: 0;
+}
+
+.disappear {
+    height: 0 !important;
+}
+
+.showing {
+    opacity: 100% !important;
+}
+
+.scale {
+    transform: scale(1.05);
+}
+
+#back-btn {
+    position: absolute;
+    top: 2vw;
+    left: 2vw;
+    padding: 0.5vw 1vw;
+    cursor: pointer;
+    border: 3px solid black;
+    border-radius: 25px;
+    background-color: #FFD0CB;
+    font-family: "Nerko One";
+    font-size: 1.5vw;
+    font-weight: 100;
+    transition: transform 0.2s ease;
+}
+
+#back-btn:hover {
+    transform: scale(1.1);
 }
 
