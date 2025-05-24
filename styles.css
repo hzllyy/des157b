@@ -292,6 +292,12 @@ body {
     left: 23.37%;
 }
 
+#feasibility {
+    top: 34.5%;
+    left: 32.5%;
+    letter-spacing: 0.02rem;
+}
+
 .hidden {
     opacity: 0;
 }
