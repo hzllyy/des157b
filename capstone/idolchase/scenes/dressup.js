@@ -99,11 +99,14 @@ export default class DressUpScene extends Phaser.Scene {
             repeat: -1
         });
 
+        const currentOutfit = '';
+
         // load background
         this.add.image(0,0, 'closet').setOrigin(0,0);
 
         // lucy with default fit
         this.lucy = this.add.sprite(280, 145, 'lucy-idle-1').play('lucy-idle');
+        this.currentOutfit = 'lucy-idle';
 
         // load clothing items
         const brownDress = this.add.image(137, 87, 'brown-dress').setOrigin(0, 0).setInteractive({useHandCursor: true});
@@ -120,11 +123,30 @@ export default class DressUpScene extends Phaser.Scene {
         const highlight5 = this.add.image(211, 87, 'highlight-5').setOrigin(0, 0).setVisible(false);
 
         // clothing and their associated animations
-        brownDress.on('pointerdown', () => this.lucy.play('lucy-clean'));
-        purpleShirt.on('pointerdown', () => this.lucy.play('lucy-pigtails'));
-        redDress.on('pointerdown', () => this.lucy.play('lucy-amu'));
-        jeans.on('pointerdown', () => this.lucy.play('lucy-y2k'));
-        weddingDress.on('pointerdown', () => this.lucy.play('lucy-wedding'));
+        brownDress.on('pointerdown', () => {
+            this.lucy.play('lucy-clean');
+            this.currentOutfit = 'lucy-clean';
+        });
+        
+        purpleShirt.on('pointerdown', () => {
+            this.lucy.play('lucy-pigtails');
+            this.currentOutfit = 'lucy-pigtails'
+        });
+
+        redDress.on('pointerdown', () => {
+            this.lucy.play('lucy-amu');
+            this.currentOutfit = 'lucy-amu';
+        });
+
+        jeans.on('pointerdown', () => {
+            this.lucy.play('lucy-y2k');
+            this.currentOutfit = 'lucy-y2k';
+        });
+
+        weddingDress.on('pointerdown', () => {
+            this.lucy.play('lucy-wedding');
+            this.currentOutfit = 'lucy-wedding';
+    });
 
         // hover ui
         brownDress.on('pointerover', () => highlight1.setVisible(true));
@@ -149,22 +171,50 @@ export default class DressUpScene extends Phaser.Scene {
             }
         });
 
-        // // button to move on to the next scene (in theory)
-        // const button = this.add.text(250, 30, "ALL SET", {
-        //     fontFamily: '"dogica"',
-        //     fontSize: '16px',
-        //     backgroundColor: '#A0B0C4',
-        //     padding: { x: 8, y: 3 },
-        //     resolution: 3
-        // }).setInteractive({useHandCursor: true});
+        // button to move on to the next scene (in theory)
+        const button = this.add.text(250, 30, "    ", {
+            backgroundColor: '#A0B0C4',
+            padding: { x: 8, y: 3 },
+            resolution: 3
+        }).setInteractive({useHandCursor: true});
 
-        // // create dialogue boxes
-        // this.dialogue = new DialogueBox(this, 224, 256, 'lucy-talk');
+        // dialogue run and skip
+        this.input.on('pointerdown', (pointer, currentlyOver) => {
+            if (currentlyOver.length > 0 && currentlyOver.includes(button)) return;
+        
+            if (this.dialogue.bg.visible) {
+                this.dialogue.skipOrHide();
+            }
+        });
 
-        // button.on('pointerdown', () => {
-        //     // Show dialogue box with a message
-        //     this.dialogue.show("I don't know... I feel like wearing something else...");
-        // });
+        // create dialogue boxes
+        this.dialogue = new DialogueBox(this, 150, 256, 'lucy-talk');
+
+        const outfitToDialogue = {
+            'lucy-idle': 'lucy-talk',
+            'lucy-clean': 'clean-lucy-talk',
+            'lucy-pigtails': 'pigtail-lucy-talk',
+            'lucy-amu': 'amu-lucy-talk',
+            'lucy-y2k': 'y2k-lucy-talk',
+            'lucy-wedding': 'wedding-talk-happy'
+        }
+
+        this.time.delayedCall(1000, () => {
+            this.dialogue.show("Can you help me pick what to wear to the meet and greet?");
+        });
+
+        button.on('pointerdown', () => {
+            const bgKey = outfitToDialogue[this.currentOutfit] || 'lucy-talk';
+            this.dialogue.bg.setTexture(bgKey);
+
+            console.log(currentOutfit);
+
+            if (this.currentOutfit === 'lucy-wedding') {
+                this.dialogue.show("I love it! I'm ready to go!", null, bgKey)
+            } else {
+                this.dialogue.show("I don't know... I feel like wearing something else", null, bgKey)
+            }
+        });
 
 
     }
