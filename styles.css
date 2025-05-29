@@ -298,6 +298,15 @@ body {
     letter-spacing: 0.02rem;
 }
 
+#version1 {
+    top: 45.75%;
+    left: 25%;
+}
+
+#usable {
+    top: 48.25%;
+}
+
 .hidden {
     opacity: 0;
 }
