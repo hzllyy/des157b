@@ -1,4 +1,4 @@
-import BootScene from './scenes/BootScene.js';
+import BootScene from './scenes/bootScene.js';
 import DressUpScene from './scenes/dressup.js';
 
 const config = {
