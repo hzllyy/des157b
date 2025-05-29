@@ -1,0 +1,16 @@
+.vt323-regular {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+  
+
+body {
+    margin: 0;
+}
+
+canvas {
+    image-rendering: pixelated;
+    width: 1344px;
+    height: 768px;
+}
