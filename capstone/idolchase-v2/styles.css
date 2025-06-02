@@ -1,0 +1,64 @@
+.vt323-regular {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+body {
+    margin: 0;
+}
+
+canvas {
+    image-rendering: pixelated;
+    width: 1344px;
+    height: 768px;
+
+    position: relative;
+}
+
+#dialogue-box {
+    font-family: 'VT323'; 
+    position: absolute;
+    top: 440px;
+    left: 46.75%;
+    font-size: 20px;
+
+    width: 355px;
+    height: 80px;
+    overflow-y: none;
+    pointer-events: none;
+}
+
+#slides {
+    position: absolute;
+    transform-origin: center;
+    top: 12%;
+    left: 15.5%;
+    z-index: 10;
+    border-radius: 40px;
+}
+
+#next {
+    position: absolute;
+    top: 47%;
+    right: 23%;
+    z-index: 100;
+    cursor: pointer;
+}
+
+#next:hover {
+    transform: scale(1.1);
+}
+
+#run {
+    position: absolute;
+    top: 30%;
+    left: 36.5%;
+    z-index: 100;
+    display: none;
+    cursor: pointer;
+}
+
+#run:hover {
+    transform: scale(1.2);
+}
