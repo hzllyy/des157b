@@ -14,7 +14,9 @@ export default class Slides {
         this.run = document.createElement('img');
         this.run.id = 'run';
         
-        const gameContainer = document.querySelector('canvas').parentElement;
+        // append to game
+        const canvas = document.querySelector('canvas');
+        const gameContainer = canvas.parentElement;
         if (gameContainer) {
             gameContainer.appendChild(this.img);
             gameContainer.appendChild(this.next);

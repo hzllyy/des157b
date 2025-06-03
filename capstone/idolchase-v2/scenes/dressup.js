@@ -219,9 +219,14 @@ export default class DressUpScene extends Phaser.Scene {
             console.log(currentOutfit);
 
             if (this.currentOutfit === 'lucy-wedding') {
-                this.dialogue.show("I love it! I'm ready to go!", null, bgKey)
+                this.dialogue.show("I love it! I'm ready to go!", null, bgKey);
+                this.time.delayedCall(2000, () => {
+                    this.scene.start('ChaseScene');
+                    this.dialogue.hide();
+                })
+
             } else {
-                this.dialogue.show("I don't know... I think I feel like wearing something else.", null, bgKey)
+                this.dialogue.show("I don't know... I think I feel like wearing something else.", null, bgKey);
             }
         });
 

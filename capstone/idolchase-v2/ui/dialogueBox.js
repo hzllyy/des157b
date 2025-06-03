@@ -17,15 +17,13 @@ export default class DialogueBox {
         this.textElement.id = 'dialogue-box'
 
         // append to game
-        const gameContainer = document.querySelector('canvas').parentElement;
+        const canvas = document.querySelector('canvas');
+        const gameContainer = canvas.parentElement;
+        console.log(canvas);
+        console.log(gameContainer);
         if (gameContainer) {
             gameContainer.appendChild(this.textElement);
         }
-
-        // create dom element
-        this.domText = scene.add.dom(250, 256, this.textElement)
-            .setOrigin(0.5, 0.5)
-            .setVisible(true);
     }
 
     // fuunction for showing dialogue
@@ -35,9 +33,6 @@ export default class DialogueBox {
         }
 
         this.bg.setVisible(true);
-        this.domText.setVisible(true);
-    
-        this.domText.setPosition(250, 256);
         this.textElement.style.display = 'block';
         
         this.typeText(text, onComplete);
@@ -46,7 +41,7 @@ export default class DialogueBox {
     // func for hiding dialogue
     hide() {
         this.bg.setVisible(false);
-        this.domText.setVisible(false);
+        this.textElement.style.display = 'none';
         this.isTyping = false;
     };
 

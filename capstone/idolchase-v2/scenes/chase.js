@@ -7,7 +7,7 @@ export default class ChaseScene extends Phaser.Scene{
 
     preload() {
         // load background
-        this.load.image('bg', 'assets/chase/background.PNG');
+        this.load.image('bgchase', 'assets/chase/background.PNG');
 
         // load scrolling assets
         this.load.image('crowd', 'assets/chase/crowd.PNG');
@@ -85,7 +85,7 @@ export default class ChaseScene extends Phaser.Scene{
         });
 
         // draw bg
-        this.add.image(0, 0, 'bg').setOrigin(0, 0);
+        this.add.image(0, 0, 'bgchase').setOrigin(0, 0);
 
         // get widths
         const crowdWidth = this.textures.get('crowd').getSourceImage().width;
@@ -243,6 +243,7 @@ export default class ChaseScene extends Phaser.Scene{
     }
 
     update(time, delta) {
+        
         if (!this.isGameStarted) return;
 
         const crowdWidth = this.textures.get('crowd').getSourceImage().width;

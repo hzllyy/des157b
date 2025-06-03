@@ -1,6 +1,5 @@
 import BootScene from './scenes/bootScene.js';
 import DressUpScene from './scenes/dressup.js';
-import ChaseScene from './scenes/chase.js'
 
 const config = {
     type: Phaser.AUTO,
