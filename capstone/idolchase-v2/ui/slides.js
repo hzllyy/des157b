@@ -25,7 +25,7 @@ export default class Slides {
 
         this.img.src = 'assets/chase/slide1.png';
         this.next.src = 'assets/chase/next.png';
-        this.run.src = 'assets/chase/run.png';
+        this.run.src = 'assets/chase/RUN.png';
 
         this.runbtn = document.getElementById('run');
 
