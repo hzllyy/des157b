@@ -67,6 +67,14 @@ export default class BootScene extends Phaser.Scene {
         // keep track of what scenes have been entered
         this.registry.set('hallwayCheck', false);
         this.registry.set('libraryCheck', false);
+
+        // keep track of inventory items
+        this.registry.set('catCheck', false);
+        this.registry.set('clothCheck', false);
+        this.registry.set('boxCheck', false);
+        this.registry.set('buttonCheck', false);
+        this.registry.set('allRoomItemsCollected', false);
+        this.registry.set('giftCreated', false);
         
         this.scene.start('RoomScene');
     }

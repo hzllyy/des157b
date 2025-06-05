@@ -6,6 +6,9 @@ import ClosetScene from './scenes/closet.js';
 import ClassroomScene from './scenes/classroom.js';
 import HallwayScene from './scenes/hallway.js';
 import LibraryScene from './scenes/library.js';
+import MeetScene from './scenes/meet.js';
+import CraftScene from './scenes/craft.js';
+import ItemScene from './scenes/item.js';
 
 const config = {
     type: Phaser.AUTO,
@@ -23,7 +26,7 @@ const config = {
     render: {
         antialias: false,
     },
-    scene: [BootScene, DressUpScene, ChaseScene, RoomScene, ClosetScene, ClassroomScene, HallwayScene, LibraryScene],
+    scene: [BootScene, DressUpScene, ChaseScene, RoomScene, ClosetScene, ClassroomScene, HallwayScene, LibraryScene, MeetScene, CraftScene, ItemScene],
     dom: {
         createContainer: true
     }
