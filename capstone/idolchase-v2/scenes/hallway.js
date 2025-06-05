@@ -25,6 +25,9 @@ export default class HallwayScene extends Phaser.Scene {
         this.load.image('ella-dialogue', 'assets/hallway/ella-dialogue.PNG');
         this.load.image('ella-dialogue-happy', 'assets/hallway/ella-dialogue-happy.PNG');
         this.load.image('ella-dialogue-contempt', 'assets/hallway/ella-dialogue-contempt.PNG');
+
+        this.load.image('classdoor', 'assets/shared/classroomdoor-select.PNG');
+        this.load.image('lockerselect', 'assets/hallway/locker-select.PNG');
     }
 
     create() {
@@ -75,19 +78,38 @@ export default class HallwayScene extends Phaser.Scene {
             this.scene.wake('ClassroomScene');
             this.scene.sleep();
         });
+        this.schooldoor1.on('pointerover', () => {
+            this.schooldoor1.setTexture('classdoor');
+        } );
+        this.schooldoor1.on('pointerout', () => {
+            this.schooldoor1.setTexture('schooldoor');
+        } )
         this.itemshall.push({
             sprite: this.add.image(175, 131, 'plaque').setInteractive({useHandCursor: true}),
             x: 175
         });
+        this.locker = this.add.image(287, 92, 'locker').setInteractive({useHandCursor: true})
         this.itemshall.push({
-            sprite: this.add.image(287, 92, 'locker').setInteractive({useHandCursor: true}),
+            sprite: this.locker,
             x: 287
         });
+        this.locker.on('pointerover', () => {
+            this.locker.setTexture('lockerselect');
+        } );
+        this.locker.on('pointerout', () => {
+            this.locker.setTexture('locker');
+        } )
         this.schooldoor2 = this.add.image(970, 131, 'schooldoor').setInteractive({useHandCursor: true})
         this.itemshall.push({
             sprite: this.schooldoor2,
             x: 970
         });
+        this.schooldoor2.on('pointerover', () => {
+            this.schooldoor2.setTexture('classdoor');
+        } );
+        this.schooldoor2.on('pointerout', () => {
+            this.schooldoor2.setTexture('schooldoor');
+        } )
         this.schooldoor2.on('pointerdown', () => {
             this.registry.set('libraryCheck', true);
             this.scene.launch('LibraryScene');
@@ -156,10 +178,9 @@ export default class HallwayScene extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
     }
 
-    updateItemPosition(itemhall, direction) {
-        const newX = itemhall.x + (direction * 1.5);
-        itemhall.sprite.x = newX;
-        itemhall.x = newX;
+    updateItemPosition(itemhall, offset) {
+        itemhall.x += offset;
+        itemhall.sprite.x = itemhall.x;
     }
 
     updateAllItems(direction) {
@@ -168,29 +189,31 @@ export default class HallwayScene extends Phaser.Scene {
         }
     }
     
-    update() {
+    update(time, delta) {
         // check if movement keys are pressed
-        const isMoving = this.cursors.left.isDown || this.cursors.right.isDow
+        const isMoving = this.cursors.left.isDown || this.cursors.right.isDown;
+
+        const scrollSpeed = 0.175 * delta;
 
         if (this.cursors.left.isDown) {
             this.lucy.play('lucy-left', true);
             // Try to scroll bg
-            const newBgHallX = Phaser.Math.Clamp(this.bghallX + 1.5, this.minX, this.maxX);
+            const newBgHallX = Phaser.Math.Clamp(this.bghallX + scrollSpeed, this.minX, this.maxX);
 
             // move items if bg is scrolling
             if (newBgHallX !== this.bghallX) {
                 this.bghallX = newBgHallX;
                 this.bghall.x = this.bghallX;
-                this.updateAllItems(1);
+                this.updateAllItems(scrollSpeed);
             }
         } else if (this.cursors.right.isDown) {
             this.lucy.play('lucy-right', true);
-            const newBgHallX = Phaser.Math.Clamp(this.bghallX - 1.5, this.minX, this.maxX);
+            const newBgHallX = Phaser.Math.Clamp(this.bghallX - scrollSpeed, this.minX, this.maxX);
 
             if (newBgHallX !== this.bghallX) {
                 this.bghallX = newBgHallX;
                 this.bghall.x = this.bghallX;
-                this.updateAllItems(-1);
+                this.updateAllItems(-scrollSpeed);
             }
         } else if (!isMoving) {
             this.lucy.play('lucy-idle', true);

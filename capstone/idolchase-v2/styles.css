@@ -10,8 +10,8 @@ body {
 
 canvas {
     image-rendering: pixelated;
-    width: 1344px;
-    height: 768px;
+    width: 1120px;
+    height: 640;
 
     position: absolute;
     top: 50%;
@@ -22,28 +22,31 @@ canvas {
 #dialogue-box {
     font-family: 'VT323'; 
     position: absolute;
-    top: 275px;
+    top: 230px;
     left: 30px;
-    font-size: 20px;
+    font-size: 17px;
 
-    width: 355px;
-    height: 80px;
+    width: 295px;
+    height: 60px;
     overflow-y: none;
     pointer-events: none;
 }
 
 #slides {
     position: absolute;
-    left: -450px;
-    top: -250px;
+    left: -365px;
+    top: -200px;
     z-index: 10;
     border-radius: 40px;
+
+    width: 737px;
+    height: 422px;
 }
 
 #next {
     position: absolute;
-    top: 175px;
-    left: 300px;
+    top: 145px;
+    left: 220px;
     z-index: 100;
     cursor: pointer;
 }
@@ -67,17 +70,17 @@ canvas {
 
 #item-card {
     position: absolute;
-    top: -320px;
-    left: -200px;
+    top: -280px;
+    left: -180px;
 
-    width: 420px;
+    width: 375px;
     border-radius: 20px;
 }
 
 #craft-back-btn, #item-close-btn {
     position: absolute;
-    top: -340px;
-    left: 470px;
+    top: -300px;
+    left: 380px;
     width: 150px;
     height: 65px;
     background-color: white;
@@ -91,7 +94,7 @@ canvas {
     cursor: pointer;
 }
 
-#craft-back-btn:hover {
+#craft-back-btn:hover, #item-close-btn:hover {
     transform: scale(1.1);
 }
 

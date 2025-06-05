@@ -111,7 +111,8 @@ export default class ChaseScene extends Phaser.Scene{
             const floor = this.add.image(i * floorWidth, 183, 'floor').setOrigin(0, 0);
             this.floors.push(floor);
         }
-
+        this.floorOffsets = this.floors.map(f => f.x);
+        
         // load idol
         this.idol = this.physics.add.sprite(230, 190, 'idol-run-1').play('idol-run').setOrigin(0.5, 1);
         this.idol.body.debugShowBody = false;
@@ -152,15 +153,15 @@ export default class ChaseScene extends Phaser.Scene{
 
         // jump logic
         this.isJumping = false;
-        this.jumpVelocity = -5.75;
-        this.gravity = 0.15;
+        this.jumpVelocity = -9;
+        this.gravity = 0.42;
         this.idolVelocityY = 0;
         this.groundY = 190;
 
         // lucy bot jump logic
         this.lucyIsJumping = false;
         this.lucyVelocityY = 0;
-        this.lucyJumpVelocity = -5.25;
+        this.lucyJumpVelocity = -9;
 
         // obstacle group
         this.obstacleGroup = this.add.group();
@@ -256,11 +257,17 @@ export default class ChaseScene extends Phaser.Scene{
         this.lastUpdateTime = time;
 
         // move floor with exact movement
-        this.floors.forEach(floor => {
-            floor.x -= movement;
-            if (floor.x <= -floorWidth) {
-                floor.x += floorWidth * this.floors.length;
+        this.floorOffsets = this.floorOffsets.map(offset => offset - movement);
+
+        this.floors.forEach((floor, i) => {
+            let offset = this.floorOffsets[i];
+        
+            if (offset <= -floorWidth) {
+                offset += floorWidth * this.floors.length;
             }
+        
+            this.floorOffsets[i] = offset;
+            floor.x = Math.round(offset); 
         });
 
         this.crowdImages.forEach(crowd => {
@@ -279,12 +286,14 @@ export default class ChaseScene extends Phaser.Scene{
             this.idol.play('idol-jump', true);
         }
 
+        const deltaFactor = delta / 16.67;
+
         // idol vertical movement
         if (this.isJumping) {
-            this.idol.y += this.idolVelocityY;
-            this.idolVelocityY += this.gravity;
-
-            // landing  
+            this.idol.y += this.idolVelocityY * deltaFactor;
+            this.idolVelocityY += this.gravity * deltaFactor;
+        
+            //landing
             if (this.idol.y >= this.groundY) {
                 this.idol.y = this.groundY;
                 this.isJumping = false;
@@ -307,9 +316,9 @@ export default class ChaseScene extends Phaser.Scene{
         }
 
         if (this.lucyIsJumping) {
-            this.lucy.y += this.lucyVelocityY;
-            this.lucyVelocityY += this.gravity;
-
+            this.lucy.y += this.lucyVelocityY * deltaFactor;
+            this.lucyVelocityY += this.gravity * deltaFactor;
+        
             if (this.lucy.y >= this.groundY) {
                 this.lucy.y = this.groundY;
                 this.lucyIsJumping = false;
@@ -341,6 +350,20 @@ export default class ChaseScene extends Phaser.Scene{
                 this.obstacleGroup.remove(obstacle, true, true);
             }
         }); 
+
+        this.obstacleGroup.getChildren().forEach(obstacle => {
+            if (!this.obstacleSpawnDistances.has(obstacle)) return;
+        
+            const spawnDistance = this.obstacleSpawnDistances.get(obstacle);
+            const distanceTraveled = this.totalDistance - spawnDistance;
+        
+            obstacle.x = Math.round(this.sys.game.config.width - distanceTraveled);
+        
+            if (obstacle.x + obstacle.width < 0) {
+                this.obstacleSpawnDistances.delete(obstacle);
+                this.obstacleGroup.remove(obstacle, true, true);
+            }
+        });
     }
 
     spawnObstacle() {

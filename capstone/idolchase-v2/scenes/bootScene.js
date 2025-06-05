@@ -24,6 +24,8 @@ export default class BootScene extends Phaser.Scene {
         this.load.image('lucy-talk', 'assets/shared/default-lucy-dialogue.PNG');
         this.load.image('lucy-talk-happy', 'assets/shared/default-lucy-dialogue-happy.PNG');
         this.load.image('wedding-talk-happy', 'assets/shared/wedding-lucy-dialogue-happy.PNG')
+
+        this.load.image('classdoor', 'assets/shared/classroomdoor-select.PNG');
     }
 
     create() {
@@ -76,6 +78,6 @@ export default class BootScene extends Phaser.Scene {
         this.registry.set('allRoomItemsCollected', false);
         this.registry.set('giftCreated', false);
         
-        this.scene.start('RoomScene');
+        this.scene.start('LibraryScene');
     }
 }

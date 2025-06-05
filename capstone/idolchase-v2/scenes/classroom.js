@@ -12,6 +12,11 @@ export default class ClassroomScene extends Phaser.Scene {
         this.load.image('schooldesk', 'assets/classroom/schooldesk.PNG');
         this.load.image('bag', 'assets/classroom/bag.PNG');
         this.load.image('schooldoor', 'assets/hallway/classroomdoor.PNG');
+
+        // load hover ui
+        this.load.image('classdesk', 'assets/classroom/classdesk-select.PNG');
+        this.load.image('bagselect', 'assets/classroom/bag-select.PNG');
+        this.load.image('classdoor', 'assets/shared/classroomdoor-select.PNG');
     }
 
     create() {
@@ -48,10 +53,17 @@ export default class ClassroomScene extends Phaser.Scene {
         });
 
         // desk
+        const schooldesk = this.add.image(120, 169, 'schooldesk').setInteractive({useHandCursor: true})
         this.itemsclasses.push({
-            sprite: this.add.image(120, 169, 'schooldesk').setInteractive({useHandCursor: true}),
+            sprite: schooldesk,
             x: 120
         });
+        schooldesk.on('pointerover', () => {
+            schooldesk.setTexture('classdesk');
+        } );
+        schooldesk.on('pointerout', () => {
+            schooldesk.setTexture('schooldesk');
+        } )
         this.itemsclasses.push({
             sprite: this.add.image(270, 169, 'schooldesk'),
             x: 270
@@ -70,10 +82,17 @@ export default class ClassroomScene extends Phaser.Scene {
         });
 
         // load bag
+        const bag = this.add.image(75, 157, 'bag').setInteractive({useHandCursor: true})
         this.itemsclasses.push({
-            sprite: this.add.image(75, 157, 'bag').setInteractive({useHandCursor: true}),
+            sprite: bag,
             x: 75
         });
+        bag.on('pointerover', () => {
+            bag.setTexture('bagselect');
+        } );
+        bag.on('pointerout', () => {
+            bag.setTexture('bag');
+        } )
 
         // load door
         this.schooldoorog = this.add.image(870, 131, 'schooldoor').setInteractive({useHandCursor: true})
@@ -86,6 +105,12 @@ export default class ClassroomScene extends Phaser.Scene {
             this.scene.launch('HallwayScene');
             this.scene.sleep();
         });
+        this.schooldoorog.on('pointerover', () => {
+            this.schooldoorog.setTexture('classdoor');
+        })
+        this.schooldoorog.on('pointerout', () => {
+            this.schooldoorog.setTexture('schooldoor');
+        })
 
         // load lucy
         this.lucy = this.add.sprite(224, 215, 'lucy-idle-1')
@@ -96,10 +121,9 @@ export default class ClassroomScene extends Phaser.Scene {
         this.cursors = this.input.keyboard.createCursorKeys();
     }
 
-    updateItemPosition(itemclass, direction) {
-        const newX = itemclass.x + (direction * 1.5);
-        itemclass.sprite.x = newX;
-        itemclass.x = newX;
+    updateItemPosition(itemclass, offset) {
+        itemclass.x += offset;
+        itemclass.sprite.x = itemclass.x;
     }
 
     updateAllItems(direction) {
@@ -108,29 +132,31 @@ export default class ClassroomScene extends Phaser.Scene {
         }
     }
 
-    update() {
+    update(time, delta) {
         // check if movement keys are pressed
-        const isMoving = this.cursors.left.isDown || this.cursors.right.isDow
+        const isMoving = this.cursors.left.isDown || this.cursors.right.isDown;
+
+        const scrollSpeed = 0.175 * delta;
 
         if (this.cursors.left.isDown) {
             this.lucy.play('lucy-left', true);
             // Try to scroll bg
-            const newBgClassX = Phaser.Math.Clamp(this.bgclassX + 1.5, this.minX, this.maxX);
+            const newBgClassX = Phaser.Math.Clamp(this.bgclassX + scrollSpeed, this.minX, this.maxX);
 
             // move items if bg is scrolling
             if (newBgClassX !== this.bgclassX) {
                 this.bgclassX = newBgClassX;
                 this.bgclass.x = this.bgclassX;
-                this.updateAllItems(1);
+                this.updateAllItems(scrollSpeed);
             }
         } else if (this.cursors.right.isDown) {
             this.lucy.play('lucy-right', true);
-            const newBgClassX = Phaser.Math.Clamp(this.bgclassX - 1.5, this.minX, this.maxX);
+            const newBgClassX = Phaser.Math.Clamp(this.bgclassX - scrollSpeed, this.minX, this.maxX);
 
             if (newBgClassX !== this.bgclassX) {
                 this.bgclassX = newBgClassX;
                 this.bgclass.x = this.bgclassX;
-                this.updateAllItems(-1);
+                this.updateAllItems(-scrollSpeed);
             }
         } else if (!isMoving) {
             this.lucy.play('lucy-idle', true);

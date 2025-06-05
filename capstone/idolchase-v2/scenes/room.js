@@ -205,10 +205,9 @@ export default class RoomScene extends Phaser.Scene {
         });
     }
 
-    updateItemPosition(item, direction) {
-        const newX = item.x + (direction * 1.5);
-        item.sprite.x = newX;
-        item.x = newX;
+    updateItemPosition(item, offset) {
+        item.x += offset;
+        item.sprite.x = item.x;
     }
 
     updateAllItems(direction) {
@@ -217,29 +216,31 @@ export default class RoomScene extends Phaser.Scene {
         }
     }
 
-    update() {
+    update(time, delta) {
         // check if movement keys are pressed
         const isMoving = this.cursors.left.isDown || this.cursors.right.isDown;
+
+        const scrollSpeed = 0.175 * delta;
 
         if (this.cursors.left.isDown) {
             this.lucy.play('lucy-left', true);
             // Try to scroll bg
-            const newBgX = Phaser.Math.Clamp(this.bgX + 1.5, this.minX, this.maxX);
+            const newBgX = Phaser.Math.Clamp(this.bgX + scrollSpeed, this.minX, this.maxX);
 
             // move items if bg is scrolling
             if (newBgX !== this.bgX) {
                 this.bgX = newBgX;
                 this.bg.x = this.bgX;
-                this.updateAllItems(1);
+                this.updateAllItems(scrollSpeed);
             }
         } else if (this.cursors.right.isDown) {
             this.lucy.play('lucy-right', true);
-            const newBgX = Phaser.Math.Clamp(this.bgX - 1.5, this.minX, this.maxX);
+            const newBgX = Phaser.Math.Clamp(this.bgX - scrollSpeed, this.minX, this.maxX);
 
             if (newBgX !== this.bgX) {
                 this.bgX = newBgX;
                 this.bg.x = this.bgX;
-                this.updateAllItems(-1);
+                this.updateAllItems(-scrollSpeed);
             }
         } else if (!isMoving) {
             this.lucy.play('lucy-idle', true);
