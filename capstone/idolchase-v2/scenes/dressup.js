@@ -9,7 +9,7 @@ export default class DressUpScene extends Phaser.Scene {
     preload() {
         // load background
         this.load.image('closet', 'assets/dressup/closet.PNG');
-        this.load.image('button', 'assets/dressup/button.PNG');
+        this.load.image('set-button', 'assets/dressup/button.PNG');
         this.load.image('button-hover', 'assets/dressup/button-hover.PNG');
 
         // load sprites with fits
@@ -174,7 +174,7 @@ export default class DressUpScene extends Phaser.Scene {
         });
 
         // button to move on to the next scene (in theory)
-        const button = this.add.image(280, 45, 'button')
+        const button = this.add.image(280, 45, 'set-button')
             .setInteractive({useHandCursor: true})
             .setOrigin(0.5, 0.5);
 
@@ -184,7 +184,7 @@ export default class DressUpScene extends Phaser.Scene {
         });
 
         button.on('pointerout', () => {
-            button.setTexture('button');
+            button.setTexture('set-button');
         });
 
         // dialogue run and skip

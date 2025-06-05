@@ -84,7 +84,7 @@ export default class RoomScene extends Phaser.Scene {
         })
         box.on('pointerdown', () => {
             this.scene.launch('ItemScene', {
-                name: 'boxFound'
+                name: 'boxfound'
             })
             this.registry.set('boxCheck', true);
             box.setTexture('box');
@@ -173,7 +173,7 @@ export default class RoomScene extends Phaser.Scene {
         });
         hanger.on('pointerdown', () => {
             this.scene.launch('ItemScene', {
-                name: 'buttonFound'
+                name: 'buttonfound'
             })
             this.registry.set('buttonCheck', true);
             hanger.setTexture('coat');
