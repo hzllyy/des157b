@@ -46,6 +46,9 @@ export default class BootScene extends Phaser.Scene {
     }
 
     create() {
+        // Reset all registry values
+        this.registry.reset();
+
         // create idle lucy animation
         this.anims.create({
             key: 'lucy-idle',
