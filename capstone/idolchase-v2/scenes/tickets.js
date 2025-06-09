@@ -26,6 +26,18 @@ export default class TicketScene extends Phaser.Scene {
             this.vip.setTexture('vip');
         });
         this.vip.on('pointerdown', () => {
+            if (this.dialogue) {
+                this.dialogue.destroy();
+                const gameContainer = document.querySelector('canvas').parentElement;
+                while (gameContainer.firstChild) {
+                    if (gameContainer.firstChild.tagName !== 'CANVAS') {
+                        gameContainer.removeChild(gameContainer.firstChild);
+                    } else {
+                        gameContainer.appendChild(gameContainer.firstChild);
+                        break;
+                    }
+                }
+            }
             this.scene.start('PhoneSecondScene');
         })
 

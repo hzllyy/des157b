@@ -19,33 +19,6 @@ export default class PhoneScene extends Phaser.Scene {
     create() {
         this.add.image(0, 0, 'phonebg').setOrigin(0, 0);
 
-
-        //click handler for showing msgs
-        this.input.on('pointerdown', () => {
-            if (this.messageQueue.length > 0) {
-                // Check and remove any messages that should be gone
-                this.messages.forEach((msg, index) => {
-                    const bubbleTop = msg.container.y - msg.bubble.height;
-                    if (bubbleTop <= 50) {
-                        const msgIndex = this.messages.indexOf(msg);
-                        if (msgIndex !== -1) {
-                            this.messages.splice(msgIndex, 1);
-                            msg.container.destroy();
-                            if (msg.textElement && msg.textElement.parentNode) {
-                                msg.textElement.parentNode.removeChild(msg.textElement);
-                            }
-                        }
-                    }
-                });
-
-                // add a small delay
-                this.time.delayedCall(100, () => {
-                    const nextMessage = this.messageQueue.shift();
-                    this.showMessage(nextMessage.text, nextMessage.bubble);
-                });
-            }
-        });
-
         // messages
         this.addMessage("Good morning, my love <3", 'idolmed');
         this.addMessage("good morningggg", 'msgshort');
@@ -74,6 +47,39 @@ export default class PhoneScene extends Phaser.Scene {
         this.addMessage("Here's the link to buy tickets.", 'idolmed');
         this.addMessage("Because you are my love, I'm giving you a special discount.", 'idollong');
         this.addMessage('', 'idollong');
+
+        // show first message automatically after a short delay
+        this.time.delayedCall(500, () => {
+            if (this.messageQueue.length > 0) {
+                const nextMessage = this.messageQueue.shift();
+                this.showMessage(nextMessage.text, nextMessage.bubble);
+            }
+        });
+
+        //click handler for showing msgs
+        this.input.on('pointerdown', () => {
+            if (this.messageQueue.length > 0) {
+                this.messages.forEach((msg, index) => {
+                    const bubbleTop = msg.container.y - msg.bubble.height;
+                    if (bubbleTop <= 50) {
+                        const msgIndex = this.messages.indexOf(msg);
+                        if (msgIndex !== -1) {
+                            this.messages.splice(msgIndex, 1);
+                            msg.container.destroy();
+                            if (msg.textElement && msg.textElement.parentNode) {
+                                msg.textElement.parentNode.removeChild(msg.textElement);
+                            }
+                        }
+                    }
+                });
+
+                // add a small delay
+                this.time.delayedCall(100, () => {
+                    const nextMessage = this.messageQueue.shift();
+                    this.showMessage(nextMessage.text, nextMessage.bubble);
+                });
+            }
+        });
     }
 
     addMessage(text, bubbleType) {

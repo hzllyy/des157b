@@ -62,7 +62,7 @@ export default class RoomScene extends Phaser.Scene {
             doll.setVisible(false);
         })
 
-        const poster = this.add.image(390, 70, 'posters').setInteractive({useHandCursor: true});
+        const poster = this.add.image(390, 70, 'posters');
         this.items.push({
             sprite: poster,
             x: 390
@@ -119,20 +119,20 @@ export default class RoomScene extends Phaser.Scene {
             door.setTexture('door')
         });
 
-        const desk = this.add.image(845, 157, 'desk').setInteractive({useHandCursor: true})
+        this.desk = this.add.image(845, 157, 'desk').setInteractive({useHandCursor: true})
         this.items.push({
-            sprite: desk,
+            sprite: this.desk,
             x: 845
         });
-        desk.on('pointerdown', () => {
+        this.desk.on('pointerdown', () => {
             this.scene.launch('CraftScene');
             this.scene.sleep();
         });
-        desk.on('pointerover', () => {
-            desk.setTexture('desk-select')
+        this.desk.on('pointerover', () => {
+            this.desk.setTexture('desk-select')
         });
-        desk.on('pointerout', () => {
-            desk.setTexture('desk')
+        this.desk.on('pointerout', () => {
+            this.desk.setTexture('desk')
         });
 
         this.items.push({
@@ -300,6 +300,11 @@ export default class RoomScene extends Phaser.Scene {
             }
         } else if (!isMoving) {
             this.lucy.play('lucy-idle', true);
+        }
+
+        if (this.registry.get('giftCreated')) {
+            this.desk.setTexture('desk');
+            this.desk.removeInteractive();
         }
     }
 } 

@@ -20,8 +20,6 @@ export default class DialogueBox extends Phaser.Events.EventEmitter {
         // append to game
         const canvas = document.querySelector('canvas');
         const gameContainer = canvas.parentElement;
-        console.log(canvas);
-        console.log(gameContainer);
         if (gameContainer) {
             gameContainer.appendChild(this.textElement);
         }

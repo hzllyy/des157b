@@ -105,6 +105,6 @@ export default class BootScene extends Phaser.Scene {
         // dialogue trackers
         this.registry.set('friendTalk', false);
         
-        this.scene.start('StartScene');
+        this.scene.start('OpenerClass');
     }
 }

@@ -2,10 +2,28 @@ import Slides from '../ui/slides.js';
 
 export default class ChaseScene extends Phaser.Scene{
     constructor() {
-        super('ChaseScene');
+        super({ key: 'ChaseScene' });
+    }
+
+    init() {
+        // Reset any scene-specific variables here
+        this.isGameStarted = false;
+        this.idolLives = 3;
+        this.timeLeft = 60;
+        this.totalDistance = 0;
+        this.lastUpdateTime = 0;
+        this.distanceSinceLastObstacle = 0;
+        this.hasSpawnedFirstObstacle = false;
+        this.notHit = true;
+        this.collisionHandled = false;
     }
 
     preload() {
+        // Skip preload if assets are already loaded
+        if (this.textures.exists('bgchase')) {
+            return;
+        }
+
         // load background
         this.load.image('bgchase', 'assets/chase/background.PNG');
 
@@ -166,18 +184,11 @@ export default class ChaseScene extends Phaser.Scene{
         // obstacle group
         this.obstacleGroup = this.add.group();
         this.obstacleSpacing = Phaser.Math.Between(150, 350);
-        this.distanceSinceLastObstacle = 0; 
         this.obstacleTypes = ['gift-pink', 'gift-purple', 'brown-bear', 'pink-bear'];
         this.obstacleSpawnDistances = new Map();
-        this.hasSpawnedFirstObstacle = false;
 
         // deal with collides
         this.physics.add.collider(this.idol, this.obstacleGroup, this.handleCollision, null, this);
-        this.notHit = true;
-        this.collisionHandled = false;
-
-        // keep track of number of lives
-        this.idolLives = 3;
 
         // ground collision
         this.idol.setCollideWorldBounds(true);
@@ -239,7 +250,7 @@ export default class ChaseScene extends Phaser.Scene{
 
         // check if time is up
         if (this.timeLeft <= 0) {
-            this.scene.pause();
+            this.scene.start('WinScene');
         }
     }
 
@@ -385,7 +396,6 @@ export default class ChaseScene extends Phaser.Scene{
     handleCollision(idol, obstacle) {
         // one collision at a time
         if (this.collisionHandled) return;
-        console.log('collision detected');
 
         // store current time left before pausing
         this.storedTimeLeft = this.timeLeft;
@@ -462,7 +472,7 @@ export default class ChaseScene extends Phaser.Scene{
                                 // check lives
                                 if (this.idolLives <= 0) {
                                     this.heartReset();
-                                    this.scene.pause();
+                                    this.scene.start('LoseScene');
                                     return;
                                 }
 

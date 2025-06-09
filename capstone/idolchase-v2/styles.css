@@ -6,12 +6,16 @@
   
 body {
     margin: 0;
+    background: url("assets/shared/bg.jpg");
 }
 
 canvas {
     image-rendering: pixelated;
     width: 1120px;
     height: 640;
+
+    border: 10px solid white;
+    border-radius: 35px;
 
     position: absolute;
     top: 50%;
@@ -103,7 +107,7 @@ canvas {
     font-family: 'VT323'; 
     position: absolute;
     top: 226px;
-    left: 40px;
+    left: -10px;
     font-size: 17px;
 
     width: 295px;
@@ -191,4 +195,30 @@ canvas {
 
 #ticketLink:hover {
     text-decoration: underline;
+}
+
+#final-back {
+    position: absolute;
+    font-family: VT323;
+    left: -530px;
+    top: 240px;
+    font-size: 45px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+#final-play {
+    position: absolute;
+    left: 390px;
+    top: 240px;
+    font-family: VT323;
+    font-size: 45px;
+    border-radius: 5px;
+    padding: 5px 15px;
+    cursor: pointer;
+}
+
+#final-back:hover, #final-play:hover {
+    transform: scale(1.2);
 }

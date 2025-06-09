@@ -90,7 +90,7 @@ export default class GiftScene extends Phaser.Scene {
                     this.conversation.addDialogue("Oh wow. This is...", 'idol-talk-scared');
                     this.conversation.addDialogue("Um.", 'idol-talk-scared');
                     this.conversation.addDialogue("...", 'idol-talk-scared');
-                    this.conversation.addDialogue("Hold on--how did you sneak that in here??", 'idol-talk-terrified');
+                    this.conversation.addDialogue("Hold on-- how did you sneak that in here??", 'idol-talk-terrified');
                 }
             )}
         }

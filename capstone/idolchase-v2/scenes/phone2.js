@@ -60,6 +60,13 @@ export default class PhoneSecondScene extends Phaser.Scene {
         this.addMessage("Well, since red and blue together makes purple, my favorite color is now purple.", 'idollong');
         this.addMessage("omgggg stoppp hehehe", 'msgshort');
         
+        // show first message automatically after a short delay
+        this.time.delayedCall(500, () => {
+            if (this.messageQueue.length > 0) {
+                const nextMessage = this.messageQueue.shift();
+                this.showMessage(nextMessage.text, nextMessage.bubble);
+            }
+        });
     }
 
     addMessage(text, bubbleType) {

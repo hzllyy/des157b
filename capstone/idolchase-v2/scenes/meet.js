@@ -49,7 +49,7 @@ export default class MeetScene extends Phaser.Scene {
         this.conversation.setDialogueBox(this.dialogue);
 
         // multiple choice ux
-        this.multipleChoiceBg = this.add.image(250, 207, 'idol-talk-scared').setVisible(false);
+        this.multipleChoiceBg = this.add.image(230, 207, 'idol-talk-scared').setVisible(false);
         this.multipleChoiceContainer = document.createElement('div');
         this.multipleChoiceContainer.id = 'choice-container';
         this.multipleChoiceContainer.style.display = 'none'; 
@@ -146,7 +146,7 @@ export default class MeetScene extends Phaser.Scene {
             this.followUpStarted = true;
             this.conversation.dialogueBox.once('conversationComplete', () => {
                 this.conversation.addDialogue("That's wrong.", 'lucy-talk-angry');
-                this.conversation.addDialogue("Who are you?", 'lucy-talk-angry');
+                this.conversation.addDialogue("You're not my Jin. Who are you?", 'lucy-talk-angry');
                 this.conversation.addDialogue("...", 'idol-talk-scared');
                 this.conversation.addDialogue("Anyways, thanks for the gift! Let me just open that right now...", 'idol-talk-happy');
                 this.conversation.start();

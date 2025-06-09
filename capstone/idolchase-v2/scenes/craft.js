@@ -71,7 +71,9 @@ export default class CraftScene extends Phaser.Scene {
         const box = this.add.image(370, 270, 'box-space').setInteractive({useHandCursor: true});
         const cat = this.add.image(70, 85, 'cat-space').setInteractive({useHandCursor: true});
         const button = this.add.image(330, 145, 'button-space').setInteractive({useHandCursor: true});
+        this.face = this.add.image(228, 110, 'face').setVisible(false)
         const cloth = this.add.image(100, 230, 'cloth-space').setInteractive({useHandCursor: true});
+        
 
         // tools
         const scissor = this.add.image(228, 50, 'scissor').setInteractive({useHandCursor: true});
@@ -224,6 +226,7 @@ export default class CraftScene extends Phaser.Scene {
 
                 if (Phaser.Geom.Intersects.RectangleToRectangle(scissorBounds, this.centerBounds) && this.catCenter) {
                     cat.setTexture('base');
+                    cat.removeInteractive();
                     this.isBase = true;
                     scissor.setVisible(false);
                 } else {
@@ -397,7 +400,7 @@ export default class CraftScene extends Phaser.Scene {
             const buttonBounds = button.getBounds();
             
             if (Phaser.Geom.Intersects.RectangleToRectangle(this.centerBounds, buttonBounds) && this.buttonOn) {
-                this.face = this.add.image(228, 110, 'face');
+                this.face.setVisible(true);
                 button.setVisible(false);
                 spool.setVisible(false);
                 this.faceOn = true;
