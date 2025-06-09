@@ -60,7 +60,7 @@ export default class SchoolCraftScene extends Phaser.Scene{
 
         // spaces
 
-        const paper = this.add.image(70, 185, 'paper-space').setInteractive({useHandCursor: true});
+        const paper = this.add.image(68, 185, 'paper-space').setInteractive({useHandCursor: true});
         const glue = this.add.image(350, 120, 'glue-space').setInteractive({useHandCursor: true});
         this.glueSpots = this.add.image(224, 128, 'glue-spots').setVisible(false);
         const be = this.add.image(120, 50, 'be-space').setInteractive({useHandCursor: true});
