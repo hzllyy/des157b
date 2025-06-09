@@ -14,6 +14,7 @@ export default class WinScene extends Phaser.Scene {
         this.backbtn.textContent = 'BACK';
         this.backbtn.id = 'final-back';
         this.backbtn.onclick = () => {
+            this.registry.reset();
             this.scene.start('OpenerClass');
         }
         this.playAgain = document.createElement('button');
