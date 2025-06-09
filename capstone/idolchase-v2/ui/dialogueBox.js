@@ -1,5 +1,6 @@
-export default class DialogueBox {
+export default class DialogueBox extends Phaser.Events.EventEmitter {
     constructor(scene, x, y, bgKey) {
+        super();
         this.scene = scene;
         this.x = x;
         this.y = y;
@@ -10,11 +11,11 @@ export default class DialogueBox {
         this.isTyping = false;
 
         // create bg 
-        this.bg = scene.add.image(250, 256, bgKey).setOrigin(0.5, 1).setVisible(false);
+        this.bg = scene.add.image(230, 256, bgKey).setOrigin(0.5, 1).setVisible(false);
 
         // dom styling
         this.textElement = document.createElement('div');
-        this.textElement.id = 'dialogue-box'
+        this.textElement.id = 'dialogue-box';
 
         // append to game
         const canvas = document.querySelector('canvas');
@@ -24,6 +25,20 @@ export default class DialogueBox {
         if (gameContainer) {
             gameContainer.appendChild(this.textElement);
         }
+
+        // listen for scene sleep/wake events
+        this.scene.events.on('sleep', () => {
+            this.textElement.style.display = 'none';
+            this.textElement.textContent = '';
+            if (this.currentEvent) {
+                this.currentEvent.remove(false);
+            }
+        });
+
+        this.scene.events.on('wake', () => {
+            this.textElement.style.display = 'none';
+            this.textElement.textContent = '';
+        });
     }
 
     // fuunction for showing dialogue

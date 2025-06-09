@@ -15,6 +15,16 @@ export default class ItemScene extends Phaser.Scene{
     }
 
     create() {
+        // ensure scene is ready
+        this.scene.bringToTop();
+
+        // create overlay first
+        this.overlay = this.add.rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, 0x000000, 0.5)
+            .setOrigin(0, 0)
+            .setDepth(0)
+            .setScrollFactor(0);
+
+        // create and add back button
         this.closeButton = document.createElement('button');
         this.closeButton.id = 'item-close-btn';
         this.closeButton.textContent = 'CLOSE';
@@ -26,12 +36,11 @@ export default class ItemScene extends Phaser.Scene{
             if (this.closeButton && this.closeButton.parentElement) {
                 this.closeButton.parentElement.removeChild(this.closeButton);
             }
-            // sleep the scene
-            this.scene.sleep();
+            // Emit event before stopping scene
+            this.events.emit('itemClosed');
+            // stop the scene
+            this.scene.stop();
         };
-
-        const overlay = this.add.rectangle(0, 0, this.cameras.main.width, this.cameras.main.height, 0x000000, 0.5)
-        .setOrigin(0, 0);
 
         const cardWidth = 125;
         const cardHeight = 190;
@@ -43,6 +52,7 @@ export default class ItemScene extends Phaser.Scene{
         this.card.id = 'item-card';
         this.card.src = `./assets/items/${this.itemData.name}.png`;
         
+        // Add elements to DOM
         const canvas = document.querySelector('canvas');
         const gameContainer = canvas.parentElement;
         if (gameContainer) {
@@ -52,6 +62,16 @@ export default class ItemScene extends Phaser.Scene{
     }
 
     shutdown() {
-        console.log('Shutdown called');
+        // clean up dom elements
+        if (this.card && this.card.parentElement) {
+            this.card.parentElement.removeChild(this.card);
+        }
+        if (this.closeButton && this.closeButton.parentElement) {
+            this.closeButton.parentElement.removeChild(this.closeButton);
+        }
+        // remove overlay
+        if (this.overlay) {
+            this.overlay.destroy();
+        }
     }
 }

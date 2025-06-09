@@ -1,4 +1,4 @@
-import RoomScene from './room.js';
+import DialogueBox from "../ui/dialogueBox.js";
 
 export default class ClosetScene extends Phaser.Scene {
     constructor() {
@@ -55,6 +55,11 @@ export default class ClosetScene extends Phaser.Scene {
         clothes1.on('pointerout', () => {
             clothes1.setTexture('clothes1')
         })
+        clothes1.on('pointerdown', () => {
+            this.time.delayedCall(100, () => {
+                this.dialogue.show("There's nothing useful here.");
+            })
+        })
 
         const clothes2 = this.add.image(288, 100, 'clothes2').setInteractive({useHandCursor: true});
         clothes2.on('pointerover', () => {
@@ -62,6 +67,11 @@ export default class ClosetScene extends Phaser.Scene {
         })
         clothes2.on('pointerout', () => {
             clothes2.setTexture('clothes2')
+        })
+        clothes2.on('pointerdown', () => {
+            this.time.delayedCall(100, () => {
+                this.dialogue.show("There's nothing useful here.");
+            })
         })
 
        const clothes3 = this.add.image(174, 118, 'clothes3').setInteractive({useHandCursor: true});
@@ -71,6 +81,11 @@ export default class ClosetScene extends Phaser.Scene {
         clothes3.on('pointerout', () => {
             clothes3.setTexture('clothes3')
         })
+        clothes3.on('pointerdown', () => {
+            this.time.delayedCall(100, () => {
+                this.dialogue.show("There's nothing useful here.");
+            })
+        })
 
         const clothes4 = this.add.image(64, 63, 'clothes4').setInteractive({useHandCursor: true});
         clothes4.on('pointerover', () => {
@@ -79,6 +94,11 @@ export default class ClosetScene extends Phaser.Scene {
         clothes4.on('pointerout', () => {
             clothes4.setTexture('clothes4')
         })
+        clothes4.on('pointerdown', () => {
+            this.time.delayedCall(100, () => {
+                this.dialogue.show("There's nothing useful here.");
+            })
+        })
 
         const clothes5 = this.add.image(64, 97, 'clothes5').setInteractive({useHandCursor: true})
         clothes5.on('pointerover', () => {
@@ -86,6 +106,11 @@ export default class ClosetScene extends Phaser.Scene {
         })
         clothes5.on('pointerout', () => {
             clothes5.setTexture('clothes5')
+        })
+        clothes5.on('pointerdown', () => {
+            this.time.delayedCall(100, () => {
+                this.dialogue.show("There's nothing useful here.");
+            })
         })
 
         if (!this.registry.get('clothCheck')) {
@@ -97,21 +122,80 @@ export default class ClosetScene extends Phaser.Scene {
                 clothespick.setTexture('select')
             })
             clothespick.on('pointerdown', () => {
-                this.scene.launch('ItemScene', {
+                const itemScene = this.scene.launch('ItemScene', {
                     name: 'clothfound'
-                })
+                });
+                this.scene.get('ItemScene').events.once('itemClosed', () => {
+                    this.playInventory();
+                });
                 this.registry.set('clothCheck', true);
                 clothespick.removeInteractive();
                 clothespick.setVisible(false);
             })
         }
-        
 
         // add lucy
         this.lucy = this.add.sprite(347, 215, 'lucy-idle-1')
             .setOrigin(0.5, 1)
             .play('lucy-idle');
 
+        const phone = this.add.image(420, 250, 'phone').setInteractive({useHandCursor: true}).setOrigin(0.5, 1);
+        this.inventory = this.add.image(380, 250, 'inventory').setInteractive({useHandCursor: true}).setOrigin(0.5, 1);
+
+        phone.on('pointerover', () => {
+            phone.setTexture('phone-select');
+        });
+        phone.on('pointerout', () => {
+            phone.setTexture('phone');
+        });
+        phone.on('pointerdown', () => {
+            this.time.delayedCall(100, () => {
+                this.dialogue.show("I don't have any notifications right now.", undefined, 'lucy-talk');
+            })
+        });
+
+        this.inventory.on('pointerover', () => {
+            this.inventory.setTexture('inventory-select');
+        })
+        this.inventory.on('pointerout', () => {
+            this.inventory.setTexture('inventory');
+        })
+        this.inventory.on('pointerdown', () => {
+            this.scene.launch('InventoryScene');
+        })
+        
+        // add dialogue
+        this.dialogue = new DialogueBox(this, 150, 256, 'lucy-talk');
+
+        this.input.on('pointerdown', (pointer, currentlyOver) => {
+            if (currentlyOver.length > 0 && currentlyOver.includes(this.lucy)) return;
+        
+            if (this.dialogue.bg.visible) {
+                this.dialogue.skipOrHide();
+            }
+        });
+
+    }
+
+    playInventory() {
+        this.time.delayedCall(100, () => {
+            this.inventory.setTexture('inventory-select');
+            this.time.delayedCall(100, () => {
+                this.inventory.setTexture('inventory');
+                this.time.delayedCall(100, () => {
+                    this.inventory.setTexture('inventory-select');
+                    this.time.delayedCall(100, () => {
+                        this.inventory.setTexture('inventory');
+                        this.time.delayedCall(100, () => {
+                            this.inventory.setTexture('inventory-select');
+                            this.time.delayedCall(100, () => {
+                                this.inventory.setTexture('inventory');
+                            })
+                        })
+                    })
+                })
+            })
+        })
     }
 
     update() {

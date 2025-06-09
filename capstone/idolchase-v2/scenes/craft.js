@@ -331,7 +331,6 @@ export default class CraftScene extends Phaser.Scene {
                     box.x = center.x;
                     box.y = center.y;
                     this.inBox = true;
-                    console.log('this is inbox');
                     
                     // show dialogue and launch item scene when box is placed
                     this.time.delayedCall(200, () => {
@@ -343,11 +342,6 @@ export default class CraftScene extends Phaser.Scene {
                         });
                     });
                     this.registry.set('giftCreated', true);
-                    // // clear desk
-                    // cat.setVisible(false);
-                    // box.setVisible(false);
-                    // this.face.setVisible(false);
-                    // this.hair.setVisible(false);
                 } else {
                     // return to original position
                     box.x = boxOriginalX;

@@ -23,9 +23,26 @@ export default class BootScene extends Phaser.Scene {
         // load default dialogues
         this.load.image('lucy-talk', 'assets/shared/default-lucy-dialogue.PNG');
         this.load.image('lucy-talk-happy', 'assets/shared/default-lucy-dialogue-happy.PNG');
-        this.load.image('wedding-talk-happy', 'assets/shared/wedding-lucy-dialogue-happy.PNG')
+        this.load.image('lucy-talk-angry', 'assets/shared/default-lucy-angry.PNG');
+
+        this.load.image('wedding-talk-happy', 'assets/shared/wedding-lucy-dialogue-happy.PNG');
+        this.load.image('wedding-talk', 'assets/shared/wedding-lucy-dialogue-smile.PNG');
+        this.load.image('wedding-talk-angry', 'assets/shared/wedding-lucy-dialogue-angry.PNG');
+        this.load.image('wedding-talk-neutral', 'assets/shared/wedding-lucy-dialogue-neutral.PNG');
+
+        // idol dialogue backgrounds
+        this.load.image('idol-talk', 'assets/shared/idol-talk.PNG');
+        this.load.image('idol-talk-happy', 'assets/shared/idol-talk-happy.PNG');
+        this.load.image('idol-talk-scared', 'assets/shared/idol-talk-scared.PNG');
+        this.load.image('idol-talk-terrified', 'assets/shared/idol-talk-terrified.PNG');
 
         this.load.image('classdoor', 'assets/shared/classroomdoor-select.PNG');
+
+        //inventory and phone icon
+        this.load.image('phone', 'assets/shared/phone.PNG');
+        this.load.image('phone-select', 'assets/shared/phone-select.PNG');
+        this.load.image('inventory', 'assets/shared/inventory.PNG');
+        this.load.image('inventory-select', 'assets/shared/inventory-select.PNG');
     }
 
     create() {
@@ -77,7 +94,17 @@ export default class BootScene extends Phaser.Scene {
         this.registry.set('buttonCheck', false);
         this.registry.set('allRoomItemsCollected', false);
         this.registry.set('giftCreated', false);
+
+        // inventory items for school
+        this.registry.set('paperCheck', false);
+        this.registry.set('glueCheck', false);
+        this.registry.set('mineCheck', false);
+        this.registry.set('beCheck', false);
+        this.registry.set('allSchoolItemsCollected', false);
+
+        // dialogue trackers
+        this.registry.set('friendTalk', false);
         
-        this.scene.start('LibraryScene');
+        this.scene.start('StartScene');
     }
 }

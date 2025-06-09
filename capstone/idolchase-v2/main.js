@@ -9,6 +9,16 @@ import LibraryScene from './scenes/library.js';
 import MeetScene from './scenes/meet.js';
 import CraftScene from './scenes/craft.js';
 import ItemScene from './scenes/item.js';
+import LockerScene from './scenes/locker.js';
+import BookcaseScene from './scenes/bookcase.js';
+import SchoolCraftScene from './scenes/schoolcraft.js';
+import InventoryScene from './scenes/inventory.js';
+import ClassInventory from './scenes/classInventory.js';
+import PhoneScene from './scenes/phone.js';
+import StartScene from './scenes/start.js';
+import TicketScene from './scenes/tickets.js';
+import PhoneSecondScene from './scenes/phone2.js';
+import GiftScene from './scenes/gift.js';
 
 const config = {
     type: Phaser.AUTO,
@@ -26,7 +36,7 @@ const config = {
     render: {
         antialias: false,
     },
-    scene: [BootScene, DressUpScene, ChaseScene, RoomScene, ClosetScene, ClassroomScene, HallwayScene, LibraryScene, MeetScene, CraftScene, ItemScene],
+    scene: [BootScene, DressUpScene, ChaseScene, RoomScene, ClosetScene, ClassroomScene, HallwayScene, LibraryScene, MeetScene, CraftScene, ItemScene, LockerScene, BookcaseScene, SchoolCraftScene, InventoryScene, ClassInventory, PhoneScene, StartScene, TicketScene, PhoneSecondScene, GiftScene],
     dom: {
         createContainer: true
     }

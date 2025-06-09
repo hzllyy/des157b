@@ -1,4 +1,5 @@
 import DialogueBox from "../ui/dialogueBox.js";
+import Conversation from '../ui/conversation.js';
 
 export default class HallwayScene extends Phaser.Scene {
     constructor() {
@@ -99,6 +100,10 @@ export default class HallwayScene extends Phaser.Scene {
         this.locker.on('pointerout', () => {
             this.locker.setTexture('locker');
         } )
+        this.locker.on('pointerdown', () => {
+            this.scene.launch('LockerScene');
+            this.scene.sleep();
+        })
         this.schooldoor2 = this.add.image(970, 131, 'schooldoor').setInteractive({useHandCursor: true})
         this.itemshall.push({
             sprite: this.schooldoor2,
@@ -111,7 +116,6 @@ export default class HallwayScene extends Phaser.Scene {
             this.schooldoor2.setTexture('schooldoor');
         } )
         this.schooldoor2.on('pointerdown', () => {
-            this.registry.set('libraryCheck', true);
             this.scene.launch('LibraryScene');
             this.scene.sleep();
         });
@@ -169,13 +173,76 @@ export default class HallwayScene extends Phaser.Scene {
             var bgKey = 'ella-dialogue-happy';
             this.dialogue.bg.setTexture(bgKey);
 
-            this.time.delayedCall(100, () => {
-                this.dialogue.show("Hi Lucy!", undefined, bgKey);
-            });
+            if (!this.registry.get('friendTalk')) {
+                this.conversation = new Conversation(this);
+                this.conversation.setDialogueBox(this.dialogue);
+                this.ella.sprite.removeInteractive();
+                this.june.sprite.removeInteractive();
+
+                this.time.delayedCall(100, () => {
+                    this.conversation.addDialogue("Hi Lucy! Are you going to Jin's concert tonight?", 'ella-dialogue-happy');
+                    this.conversation.addDialogue("Yes, I'm so excited! I even made him a gift!", 'lucy-talk-happy');
+                    this.conversation.addDialogue("OMG, did you get the Meet and Greet tickets? I'm so jealous, they're so expensive!", 'ella-dialogue');
+                    this.conversation.addDialogue("Well, he gave me a huge discount!", 'lucy-talk-happy');
+                    this.conversation.addDialogue("What! Lucky!", 'ella-dialogue');
+                    this.conversation.addDialogue("Me and Juni are going tonight too, but we're just going through boring GA.", 'ella-dialogue-happy');
+                    this.conversation.addDialogue("Wait, I didn't agree to this.", 'june-dialogue');
+                    this.conversation.addDialogue("Yes you did.", 'ella-dialogue-happy');
+                    this.conversation.addDialogue("Since when--", 'june-dialogue');
+                    this.conversation.addDialogue("Anyway, what did you make him?", 'ella-dialogue');
+                    this.conversation.addDialogue("A cute little plushie! And it's super purple, since his favorite color is purple!", 'lucy-talk');
+                    this.conversation.addDialogue("What? He told me his favorite color was green!", 'ella-dialogue-contempt');
+                    this.conversation.addDialogue("No, he said it was purple!", 'lucy-talk');
+                    this.conversation.addDialogue("You guys do know that stupid chatbot is not actually Jin right?", 'june-dialogue');
+                    this.conversation.addDialogue("You don't have to ruin all the fun, Juni.", 'ella-dialogue-contempt');
+                    this.conversation.addDialogue("Yeah, you don't know what you're talking about.", 'lucy-talk');
+
+                    this.conversation.start();
+                });
+
+                this.registry.set('friendTalk', true);
+                
+                // Set up a listener for when the conversation ends
+                this.conversation.dialogueBox.on('conversationComplete', () => {
+                    this.ella.sprite.setInteractive({useHandCursor: true});
+                    this.june.sprite.setInteractive({useHandCursor: true});
+                });
+                
+            } else {
+                this.dialogue.bg.setTexture('ella-dialogue-happy');
+                this.time.delayedCall(100, () => {
+                    this.dialogue.show("Hi Lucy!", undefined, 'ella-dialogue-happy');
+                });
+            }
         })
 
         // read cursor input
         this.cursors = this.input.keyboard.createCursorKeys();
+
+        this.inventory = this.add.image(380, 250, 'inventory').setInteractive({useHandCursor: true}).setOrigin(0.5, 1);
+
+        const phone = this.add.image(420, 250, 'phone').setInteractive({useHandCursor: true}).setOrigin(0.5, 1);
+        phone.on('pointerover', () => {
+            phone.setTexture('phone-select');
+        });
+        phone.on('pointerout', () => {
+            phone.setTexture('phone');
+        });
+        phone.on('pointerdown', () => {
+            this.time.delayedCall(100, () => {
+                this.dialogue.show("I don't have any notifications right now.", undefined, 'lucy-talk');
+            })
+        });
+
+        this.inventory.on('pointerover', () => {
+            this.inventory.setTexture('inventory-select');
+        })
+        this.inventory.on('pointerout', () => {
+            this.inventory.setTexture('inventory');
+        })
+        this.inventory.on('pointerdown', () => {
+            this.scene.launch('ClassInventory');
+        })
     }
 
     updateItemPosition(itemhall, offset) {
