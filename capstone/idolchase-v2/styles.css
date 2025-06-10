@@ -12,7 +12,7 @@ body {
 canvas {
     image-rendering: pixelated;
     width: 1120px;
-    height: 640;
+    height: 640px;
 
     border: 10px solid white;
     border-radius: 35px;
@@ -32,7 +32,6 @@ canvas {
 
     width: 295px;
     height: 60px;
-    overflow-y: none;
     pointer-events: none;
 }
 
@@ -112,7 +111,6 @@ canvas {
 
     width: 295px;
     height: 60px;
-    overflow-y: none;
 
     display: flex;
     flex-direction: column;
