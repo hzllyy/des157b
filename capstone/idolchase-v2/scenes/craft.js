@@ -340,8 +340,12 @@ export default class CraftScene extends Phaser.Scene {
                         this.dialogue.show("Yay! This looks perfect!");
                     });
                     this.time.delayedCall(2000, () => {
-                        this.scene.launch('ItemScene', {
+                        const itemScene = this.scene.launch('ItemScene', {
                             name: 'giftcreated'
+                        });
+                        this.scene.get('ItemScene').events.once('itemClosed', () => {
+                            // Clean up any remaining event listeners
+                            this.scene.get('ItemScene').events.removeAllListeners('itemClosed');
                         });
                     });
                     this.registry.set('giftCreated', true);
