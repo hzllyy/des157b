@@ -312,6 +312,11 @@ body {
     top: 48.25%;
 }
 
+#final {
+    top: 59.3%;
+    left: 26%;
+}
+
 .hidden {
     opacity: 0;
 }
