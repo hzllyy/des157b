@@ -1,0 +1,103 @@
+/* CSS Resets */
+.vt323-regular {
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+  }
+
+h1, h2, h3, h4, p, nav ul {
+    padding: 0;
+    margin: 0;
+}
+nav ul {
+    list-style-type: none;
+    font-size: 22px;
+}
+img { max-width: 100%; display: block; }
+* { box-sizing: border-box;}
+
+/* end Resets */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'VT323';
+    color: #333;
+}
+nav {
+    border-top: 2px solid #333;
+}
+nav ul li a {
+    text-decoration: none;
+    display: block;
+    color:#333;
+    font-weight: bold;
+    border-bottom: 2px solid #333;
+    text-align: center;
+    padding: 10px;
+
+}
+
+header, footer {
+    background-color: #9c516b;
+    color: white;
+    font-size: 24px;
+}
+
+header, section, footer {
+    padding: 20px;
+}
+
+section:nth-child(even){
+    background-color: #ffe8f0;
+}
+
+.container {
+    max-width: 1000px;
+}
+
+h1, h2 {
+    margin-bottom: .5em;
+    font-size: 28px;
+}
+
+p {
+    line-height: 1.4em;
+    margin-bottom: 1em;
+    font-size: 20px;
+}
+
+ol li {
+    margin-bottom: 1em;
+}
+
+img {
+    display:block;
+    margin: auto;
+    padding-bottom: 30px;
+}
+
+#top {
+    padding-top: 15px;
+    color: white;
+    text-decoration: none;
+}
+
+@media only screen and (min-width: 768px) {
+    nav ul { display: flex; }
+    nav ul li { flex: 1; }
+}
+
+@media only screen and (min-width: 1000px) {
+    .container{ margin: auto; }
+    nav ul {
+        max-width: 1000px;
+        margin: auto;
+    }
+    .content { 
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 40px;
+    }
+}
